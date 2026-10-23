@@ -1,0 +1,6 @@
+# These third-party files are verified by SHA-256, including original EOL bytes.
+# Do not normalize them on add or checkout (independent of core.autocrlf).
+/static/vendor/** -text
+
+# Scientific source subsets are also verified by their exact bytes.
+/data/terrain/*.npz -text

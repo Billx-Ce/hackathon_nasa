@@ -152,6 +152,22 @@ Cambiar temperatura/humedad en el DHT22 simulado y consultar el historial. No se
 
 ## Render
 
+### Integridad de recursos y saltos de línea
+
+`.gitattributes` marca `static/vendor/**` y `data/terrain/*.npz` como `-text`: Git debe guardar y recuperar sus bytes exactos, independientemente de `core.autocrlf`. No editar ni normalizar estos archivos automáticamente: el build comprueba SHA-256 mediante `scripts/check_assets.py`.
+
+Se corrigió un fallo causado por `core.autocrlf=true`: el archivo local `leaflet.css` conservaba 661 saltos CRLF y coincidía con el manifiesto, pero el blob del commit tenía LF y no coincidía. También afectaba a `LEAFLET-LICENSE.txt` (26 saltos CRLF). Los otros cinco recursos verificados del manifiesto y los tres `.npz` ya coincidían con Git. Se volvieron a registrar los bytes originales verificados; **no se cambiaron los hashes ni se desactivó el verificador**. El manifiesto solo recuperó sus saltos de línea locales bajo la nueva regla; sus URLs y hashes permanecen iguales.
+
+La regla requiere registrar de nuevo los recursos ya seguidos: no basta con añadir `.gitattributes` si el índice sigue conteniendo bytes normalizados. El cambio preparado incluye esa corrección.
+
+Validación reproducible del índice preparado, sin crear commits en la rama del proyecto:
+
+```powershell
+python scripts/check_clean_checkout.py
+```
+
+Este script exporta únicamente archivos del índice (sin `.env`), valida recursos y crea un repositorio temporal independiente para obtener un checkout con `core.autocrlf=false`, equivalente en bytes al checkout Linux de Render. Allí ejecuta el verificador y las pruebas. La comprobación pasó con los siete recursos de terceros, los recortes científicos y 24 pruebas Python. Las dependencias de pruebas deben estar instaladas en el Python utilizado; el análisis numérico requiere `requirements-terrain.lock.txt`. No se ha realizado un despliegue nuevo desde esta comprobación local.
+
 Subir esta carpeta como raíz de un repositorio y crear un servicio desde `render.yaml`. El build instala `requirements.lock.txt` y comprueba artefactos científicos y bibliotecas; falla si faltan o sus hashes no coinciden. Inicio: `uvicorn main:app --host 0.0.0.0 --port $PORT`, health check `/api/health`, Python 3.11.11. Configurar las tres variables secretas en Render; el blueprint no contiene sus valores.
 
 Tras desplegar: abrir la web, probar ambos visores y un candidato, consultar `/api/storage/status`, enviar una lectura desde Wokwi y confirmar su persistencia tras reiniciar el servicio. No se creó ni publicó ningún recurso en una cuenta externa durante esta entrega.
