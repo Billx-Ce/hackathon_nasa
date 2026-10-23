@@ -1,0 +1,4 @@
+# Offline data acquisition / analysis. The FastAPI server only serves JSON artifacts.
+-r requirements.txt
+numpy>=1.24,<3
+rasterio>=1.4,<2

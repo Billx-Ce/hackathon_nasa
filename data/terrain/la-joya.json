@@ -1,0 +1,47 @@
+{
+  "region": {
+    "id": "la-joya",
+    "name": "Regi\u00f3n de La Joya",
+    "body": "Earth",
+    "latitude": -16.5,
+    "longitude": -71.9
+  },
+  "retrieved_at": "2026-10-23T00:27:36.197450+00:00",
+  "sources": [
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S17/S17W073.hgt.gz",
+      "sha256": "965e03a1118e1a049416c6943ab23e0fc7844bb587110261184eff00009a39c3",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    },
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S17/S17W072.hgt.gz",
+      "sha256": "f0c3390af3cd22f88d34c590116b7bed3dd5639d0892890da6757ffed52f136d",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    }
+  ],
+  "source_crs": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+  "native_resolution": [
+    0.0002777777777777778,
+    0.0002777777777777778
+  ],
+  "native_resolution_unit": "degree",
+  "target_crs": "+proj=aeqd +lat_0=-16.5 +lon_0=-71.9 +datum=WGS84 +units=m +no_defs",
+  "transform": [
+    500.0,
+    0.0,
+    -50000.0,
+    0.0,
+    -500.0,
+    50000.0
+  ],
+  "cell_m": 500,
+  "shape": [
+    200,
+    200
+  ],
+  "resampling": "GDAL average",
+  "missing_fraction": 0.0,
+  "sha256": "4c13188404bd297bcdb2e207621852cf1db9d290a9f3ab0ad35eb8000562ae2d"
+}

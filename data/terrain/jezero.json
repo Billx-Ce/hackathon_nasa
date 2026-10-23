@@ -1,0 +1,40 @@
+{
+  "region": {
+    "id": "jezero",
+    "name": "Jezero \u00b7 regi\u00f3n exploratoria",
+    "body": "Mars",
+    "latitude": 18.38,
+    "longitude": 77.58
+  },
+  "retrieved_at": "2026-10-23T00:27:16.199784+00:00",
+  "sources": [
+    {
+      "url": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif",
+      "product": "MGS MOLA global DEM 463m",
+      "vertical_datum": "Mars areoid"
+    }
+  ],
+  "source_crs": "PROJCS[\"Equirectangular Mars\",GEOGCS[\"GCS_Mars\",DATUM[\"D_Mars\",SPHEROID[\"Mars_localRadius\",3396190,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+  "native_resolution": [
+    463.0935415503709,
+    463.0935415503709
+  ],
+  "native_resolution_unit": "m at equator",
+  "target_crs": "+proj=aeqd +lat_0=18.38 +lon_0=77.58 +R=3396190 +units=m +no_defs",
+  "transform": [
+    500.0,
+    0.0,
+    -50000.0,
+    0.0,
+    -500.0,
+    50000.0
+  ],
+  "cell_m": 500,
+  "shape": [
+    200,
+    200
+  ],
+  "resampling": "GDAL average",
+  "missing_fraction": 0.0,
+  "sha256": "a3e1ee3a140e9f56c8bcfc57c1b45bba702ab97617eed80d1f7b156e2428824d"
+}

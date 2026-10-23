@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: analog-explorer
+    runtime: python
+    buildCommand: pip install -r requirements.lock.txt && python scripts/check_assets.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: DEVICE_TOKEN
+        sync: false

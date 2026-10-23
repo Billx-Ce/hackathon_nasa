@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "Analog Explorer",
+  "editor": "wokwi",
+  "parts": [
+    {"type":"board-esp32-devkit-c-v4","id":"esp","top":0,"left":0,"attrs":{}},
+    {"type":"wokwi-dht22","id":"dht","top":0,"left":230,"attrs":{"temperature":"24","humidity":"45"}}
+  ],
+  "connections": [
+    ["esp:TX","$serialMonitor:RX","",[]],
+    ["esp:RX","$serialMonitor:TX","",[]],
+    ["dht:VCC","esp:3V3","red",[]],
+    ["dht:GND","esp:GND.1","black",[]],
+    ["dht:SDA","esp:15","green",[]]
+  ]
+}

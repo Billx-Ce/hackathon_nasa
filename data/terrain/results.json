@@ -1,0 +1,3491 @@
+{
+  "status": "exploratory-real-dem",
+  "generated_at": "2026-10-23T00:29:06.164814+00:00",
+  "method": "StandardScaler + PCA (95% training variance) + Euclidean retrieval; no whitening",
+  "reference": {
+    "region": {
+      "id": "jezero",
+      "name": "Jezero · región exploratoria",
+      "body": "Mars",
+      "latitude": 18.38,
+      "longitude": 77.58
+    },
+    "window_km": 10,
+    "features": {
+      "relief_p95_p05_m": 57.70407714843748,
+      "elevation_std_m": 20.237270808413136,
+      "slope_mean_deg": 0.6125317031863825,
+      "slope_p90_deg": 1.0220871187926053,
+      "slope_std_deg": 0.4051173805552817,
+      "laplacian_rms_m": 4.701859502533519,
+      "detrended_rms_m": 9.569839673708968
+    }
+  },
+  "grid": {
+    "cell_m": 500,
+    "region_km": 100,
+    "window_km": 10
+  },
+  "provenance": {
+    "jezero": {
+      "region": {
+        "id": "jezero",
+        "name": "Jezero · región exploratoria",
+        "body": "Mars",
+        "latitude": 18.38,
+        "longitude": 77.58
+      },
+      "retrieved_at": "2026-10-23T00:27:16.199784+00:00",
+      "sources": [
+        {
+          "url": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif",
+          "product": "MGS MOLA global DEM 463m",
+          "vertical_datum": "Mars areoid"
+        }
+      ],
+      "source_crs": "PROJCS[\"Equirectangular Mars\",GEOGCS[\"GCS_Mars\",DATUM[\"D_Mars\",SPHEROID[\"Mars_localRadius\",3396190,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "native_resolution": [
+        463.0935415503709,
+        463.0935415503709
+      ],
+      "native_resolution_unit": "m at equator",
+      "target_crs": "+proj=aeqd +lat_0=18.38 +lon_0=77.58 +R=3396190 +units=m +no_defs",
+      "transform": [
+        500.0,
+        0.0,
+        -50000.0,
+        0.0,
+        -500.0,
+        50000.0
+      ],
+      "cell_m": 500,
+      "shape": [
+        200,
+        200
+      ],
+      "resampling": "GDAL average",
+      "missing_fraction": 0.0,
+      "sha256": "a3e1ee3a140e9f56c8bcfc57c1b45bba702ab97617eed80d1f7b156e2428824d"
+    },
+    "la-joya": {
+      "region": {
+        "id": "la-joya",
+        "name": "Región de La Joya",
+        "body": "Earth",
+        "latitude": -16.5,
+        "longitude": -71.9
+      },
+      "retrieved_at": "2026-10-23T00:27:36.197450+00:00",
+      "sources": [
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S17/S17W073.hgt.gz",
+          "sha256": "965e03a1118e1a049416c6943ab23e0fc7844bb587110261184eff00009a39c3",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        },
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S17/S17W072.hgt.gz",
+          "sha256": "f0c3390af3cd22f88d34c590116b7bed3dd5639d0892890da6757ffed52f136d",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        }
+      ],
+      "source_crs": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+      "native_resolution": [
+        0.0002777777777777778,
+        0.0002777777777777778
+      ],
+      "native_resolution_unit": "degree",
+      "target_crs": "+proj=aeqd +lat_0=-16.5 +lon_0=-71.9 +datum=WGS84 +units=m +no_defs",
+      "transform": [
+        500.0,
+        0.0,
+        -50000.0,
+        0.0,
+        -500.0,
+        50000.0
+      ],
+      "cell_m": 500,
+      "shape": [
+        200,
+        200
+      ],
+      "resampling": "GDAL average",
+      "missing_fraction": 0.0,
+      "sha256": "4c13188404bd297bcdb2e207621852cf1db9d290a9f3ab0ad35eb8000562ae2d"
+    },
+    "atacama-control": {
+      "region": {
+        "id": "atacama-control",
+        "name": "Región de Atacama",
+        "body": "Earth",
+        "latitude": -24.1,
+        "longitude": -69.9
+      },
+      "retrieved_at": "2026-10-23T00:28:31.474650+00:00",
+      "sources": [
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S25/S25W071.hgt.gz",
+          "sha256": "8f236f517456b06f1794c15fc658cfb94d83109ccb3baef091bdf6b1175a24cd",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        },
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S25/S25W070.hgt.gz",
+          "sha256": "95e0c4fd70dc4cdcb038a95faf81602c667c50d475125d0223e2fa30268c672c",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        },
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S24/S24W071.hgt.gz",
+          "sha256": "ad83ffc6b7400d69fd126d0508a7751151241f8dd4707ef7c834d70446560a10",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        },
+        {
+          "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S24/S24W070.hgt.gz",
+          "sha256": "c1b61f1b0628199925c6c1fc7effe7b4d6a4df4c28e616203d25769f6f9ae968",
+          "product": "Mapzen Skadi (global source mosaic)",
+          "vertical_datum": "WGS84/EGM96 geoid"
+        }
+      ],
+      "source_crs": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+      "native_resolution": [
+        0.0002777777777777778,
+        0.0002777777777777778
+      ],
+      "native_resolution_unit": "degree",
+      "target_crs": "+proj=aeqd +lat_0=-24.1 +lon_0=-69.9 +datum=WGS84 +units=m +no_defs",
+      "transform": [
+        500.0,
+        0.0,
+        -50000.0,
+        0.0,
+        -500.0,
+        50000.0
+      ],
+      "cell_m": 500,
+      "shape": [
+        200,
+        200
+      ],
+      "resampling": "GDAL average",
+      "missing_fraction": 0.0,
+      "sha256": "fcc8dde363b6354d8e1ec9fc0e14cab2d4a960b90ea4f606c087ea15803da15d"
+    }
+  },
+  "evaluation": {
+    "training_windows": 95,
+    "heldout_windows": 80,
+    "buffer_km": 10,
+    "pca_components": 2,
+    "explained_training_variance": 0.9567669318486275,
+    "heldout_reconstruction_rmse_standardized": 0.2679389152063082,
+    "rank_correlation_with_baseline": 0.9996015002344116,
+    "top5_overlap_with_baseline": 1.0,
+    "reference_outside_training_range": [
+      "relief_p95_p05_m",
+      "laplacian_rms_m"
+    ],
+    "scientific_accuracy": null,
+    "train_on_single_region_sensitivity": [
+      {
+        "training_region": "atacama-control",
+        "training_windows": 50,
+        "top5_overlap_with_pooled": 1.0
+      },
+      {
+        "training_region": "la-joya",
+        "training_windows": 45,
+        "top5_overlap_with_pooled": 1.0
+      }
+    ],
+    "interpretation": "Evaluación interna de compresión y acuerdo con la base. No mide validez de análogos."
+  },
+  "ranking": [
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 76.51563720703122,
+        "elevation_std_m": 24.41890691989232,
+        "slope_mean_deg": 0.8538866851728105,
+        "slope_p90_deg": 1.3878235720677203,
+        "slope_std_deg": 0.8966449805123085,
+        "laplacian_rms_m": 16.56339584003043,
+        "detrended_rms_m": 17.60976485157586
+      },
+      "pca_distance": 0.39750945043534175,
+      "baseline_distance": 0.42717454146855305,
+      "latitude": -24.145071391643626,
+      "longitude": -69.75241649880537
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 128.11180114746094,
+        "elevation_std_m": 39.48887286884069,
+        "slope_mean_deg": 0.876284981801778,
+        "slope_p90_deg": 1.4435424467359435,
+        "slope_std_deg": 0.46677159603339363,
+        "laplacian_rms_m": 3.7526620979281073,
+        "detrended_rms_m": 16.49372153931698
+      },
+      "pca_distance": 0.40355402425950027,
+      "baseline_distance": 0.42212435981387936,
+      "latitude": -23.87421187541273,
+      "longitude": -69.75272557260566
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 122.09450073242186,
+        "elevation_std_m": 38.35514590919538,
+        "slope_mean_deg": 1.0366446593022183,
+        "slope_p90_deg": 1.7886211017566882,
+        "slope_std_deg": 0.5359872292496407,
+        "laplacian_rms_m": 17.0542335018113,
+        "detrended_rms_m": 13.730466256840181
+      },
+      "pca_distance": 0.4748940428017768,
+      "baseline_distance": 0.5047970173308093,
+      "latitude": -24.41592129612004,
+      "longitude": -69.75210392852918
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 124.49812011718745,
+        "elevation_std_m": 39.063713485355436,
+        "slope_mean_deg": 1.107487784503403,
+        "slope_p90_deg": 1.8874071811527136,
+        "slope_std_deg": 0.5693749332740917,
+        "laplacian_rms_m": 15.324071126858037,
+        "detrended_rms_m": 13.39738427501237
+      },
+      "pca_distance": 0.4906453477059108,
+      "baseline_distance": 0.510077576194742,
+      "latitude": -24.325639067564147,
+      "longitude": -69.75220850933759
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 154.10194091796865,
+        "elevation_std_m": 48.389448363656705,
+        "slope_mean_deg": 0.9647577694755772,
+        "slope_p90_deg": 1.171426669555659,
+        "slope_std_deg": 0.19750416851010022,
+        "laplacian_rms_m": 5.508551705898852,
+        "detrended_rms_m": 5.137584377804386
+      },
+      "pca_distance": 0.5369771371548824,
+      "baseline_distance": 0.5666032411125687,
+      "latitude": -23.964499443814262,
+      "longitude": -69.75262293429725
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 148.22523803710936,
+        "elevation_std_m": 40.52299137983287,
+        "slope_mean_deg": 1.2243232860168822,
+        "slope_p90_deg": 2.495962735782383,
+        "slope_std_deg": 0.9203382835037781,
+        "laplacian_rms_m": 18.299216173480563,
+        "detrended_rms_m": 19.313369678605
+      },
+      "pca_distance": 0.7118634976445903,
+      "baseline_distance": 0.7261759541558462,
+      "latitude": -24.506202447794074,
+      "longitude": -69.75199895521034
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 129.88023681640624,
+        "elevation_std_m": 42.06694838067256,
+        "slope_mean_deg": 1.4227100614452606,
+        "slope_p90_deg": 2.951942574825624,
+        "slope_std_deg": 1.1935210194310073,
+        "laplacian_rms_m": 24.069817415311206,
+        "detrended_rms_m": 30.866525905054242
+      },
+      "pca_distance": 0.9487312936800179,
+      "baseline_distance": 0.9541201061763178,
+      "latitude": -24.50607481111038,
+      "longitude": -69.6533317572237
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 116.99342041015622,
+        "elevation_std_m": 41.3641464030183,
+        "slope_mean_deg": 1.4393126275749488,
+        "slope_p90_deg": 3.2412833565987405,
+        "slope_std_deg": 1.387029240111305,
+        "laplacian_rms_m": 25.70146693628586,
+        "detrended_rms_m": 25.603329085992595
+      },
+      "pca_distance": 0.9781567094931777,
+      "baseline_distance": 0.9848691014231358,
+      "latitude": -24.05478595022445,
+      "longitude": -69.7525199101356
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 178.28734130859368,
+        "elevation_std_m": 56.611192002302424,
+        "slope_mean_deg": 1.7342400553951716,
+        "slope_p90_deg": 3.4873871169207744,
+        "slope_std_deg": 1.2158859791416596,
+        "laplacian_rms_m": 26.09521809570012,
+        "detrended_rms_m": 23.92648898525177
+      },
+      "pca_distance": 1.1345014005512553,
+      "baseline_distance": 1.1484798802097371,
+      "latitude": -23.693633564687747,
+      "longitude": -69.75292969688473
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 172.3634826660156,
+        "elevation_std_m": 53.31566066202576,
+        "slope_mean_deg": 1.7569197927543914,
+        "slope_p90_deg": 3.6913482667121866,
+        "slope_std_deg": 1.3263536704526966,
+        "laplacian_rms_m": 31.069005213506692,
+        "detrended_rms_m": 26.916738537323962
+      },
+      "pca_distance": 1.2136674799082443,
+      "baseline_distance": 1.2280349192546922,
+      "latitude": -24.50588335671557,
+      "longitude": -69.55466480704399
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 285.8857727050779,
+        "elevation_std_m": 87.93098807413345,
+        "slope_mean_deg": 1.7937730275260544,
+        "slope_p90_deg": 2.6806206130527803,
+        "slope_std_deg": 0.6853015495999052,
+        "laplacian_rms_m": 10.596291326311867,
+        "detrended_rms_m": 31.998772875770392
+      },
+      "pca_distance": 1.4379254449482894,
+      "baseline_distance": 1.4592746472175055,
+      "latitude": -16.816220589877467,
+      "longitude": -71.75927332456838
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 288.9864410400389,
+        "elevation_std_m": 92.37024405266094,
+        "slope_mean_deg": 1.9717169700776451,
+        "slope_p90_deg": 2.784096745750331,
+        "slope_std_deg": 0.7479334824135373,
+        "laplacian_rms_m": 10.480628567428077,
+        "detrended_rms_m": 23.27700271836545
+      },
+      "pca_distance": 1.4623058012239851,
+      "baseline_distance": 1.488967124560485,
+      "latitude": -23.783923248030202,
+      "longitude": -69.75282782636829
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 164.6854858398437,
+        "elevation_std_m": 56.24356981887008,
+        "slope_mean_deg": 1.790768833993067,
+        "slope_p90_deg": 4.062815248282309,
+        "slope_std_deg": 2.102402072793937,
+        "laplacian_rms_m": 35.82095105601857,
+        "detrended_rms_m": 29.535913886683794
+      },
+      "pca_distance": 1.4866258754283395,
+      "baseline_distance": 1.5225422469535437,
+      "latitude": -24.2353557650829,
+      "longitude": -69.75231269898316
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 186.2897399902343,
+        "elevation_std_m": 55.02823882590734,
+        "slope_mean_deg": 2.3884720563791535,
+        "slope_p90_deg": 4.2072666877289,
+        "slope_std_deg": 1.3964900158316689,
+        "laplacian_rms_m": 33.165694171263866,
+        "detrended_rms_m": 44.572920092962
+      },
+      "pca_distance": 1.5366882249993332,
+      "baseline_distance": 1.5461162741062775,
+      "latitude": -24.50562808536654,
+      "longitude": -69.45599820378848
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 332.51165771484364,
+        "elevation_std_m": 100.13277349576563,
+        "slope_mean_deg": 2.038437140418615,
+        "slope_p90_deg": 2.8439318778299567,
+        "slope_std_deg": 0.5207363424962994,
+        "laplacian_rms_m": 12.016749373651495,
+        "detrended_rms_m": 14.69492250192184
+      },
+      "pca_distance": 1.6053355650846879,
+      "baseline_distance": 1.6509892899137388,
+      "latitude": -16.725859348712568,
+      "longitude": -71.75933943591394
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 243.7566406249996,
+        "elevation_std_m": 75.70050205203782,
+        "slope_mean_deg": 2.2823666707686874,
+        "slope_p90_deg": 4.43466816945845,
+        "slope_std_deg": 1.4651496968146194,
+        "laplacian_rms_m": 29.050541696760686,
+        "detrended_rms_m": 58.13431261616288
+      },
+      "pca_distance": 1.8049495818838899,
+      "baseline_distance": 1.8337442533387762,
+      "latitude": -24.415602800003935,
+      "longitude": -69.55490974154654
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 249.5733459472654,
+        "elevation_std_m": 76.52666241283097,
+        "slope_mean_deg": 2.7797535567825595,
+        "slope_p90_deg": 4.511646572105618,
+        "slope_std_deg": 1.2754774675840257,
+        "laplacian_rms_m": 31.616416144438006,
+        "detrended_rms_m": 63.95539262857738
+      },
+      "pca_distance": 1.932701818663653,
+      "baseline_distance": 1.9738434300062693,
+      "latitude": -23.693068754260036,
+      "longitude": -69.45879036274572
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 293.9176696777343,
+        "elevation_std_m": 88.62997493570113,
+        "slope_mean_deg": 2.2576766375810706,
+        "slope_p90_deg": 4.472643896251173,
+        "slope_std_deg": 1.7440578957330843,
+        "laplacian_rms_m": 25.44513028073424,
+        "detrended_rms_m": 61.389431403810924
+      },
+      "pca_distance": 1.9984118789401648,
+      "baseline_distance": 2.0488221200334378,
+      "latitude": -23.87389692100567,
+      "longitude": -69.55636022530969
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 307.932470703125,
+        "elevation_std_m": 98.07791724008395,
+        "slope_mean_deg": 2.6167272112086186,
+        "slope_p90_deg": 4.612133402211996,
+        "slope_std_deg": 1.413014456466647,
+        "laplacian_rms_m": 33.35236241025216,
+        "detrended_rms_m": 41.17489804915701
+      },
+      "pca_distance": 2.0140973256173877,
+      "baseline_distance": 2.0208526170089645,
+      "latitude": -24.05421691830059,
+      "longitude": -69.4575610314625
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 354.83457031249986,
+        "elevation_std_m": 110.22879892028593,
+        "slope_mean_deg": 2.5658557232256,
+        "slope_p90_deg": 3.39938465205735,
+        "slope_std_deg": 1.2374921840477058,
+        "laplacian_rms_m": 41.06414327116515,
+        "detrended_rms_m": 23.910627038426036
+      },
+      "pca_distance": 2.031030421899689,
+      "baseline_distance": 2.1060354485794464,
+      "latitude": -16.364197452127726,
+      "longitude": -71.57240244783395
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 391.426330566406,
+        "elevation_std_m": 116.9397347005645,
+        "slope_mean_deg": 2.5761271910967385,
+        "slope_p90_deg": 3.3211646523135885,
+        "slope_std_deg": 0.5544006162409585,
+        "laplacian_rms_m": 30.693074139813238,
+        "detrended_rms_m": 17.127086927627637
+      },
+      "pca_distance": 2.0464401911089727,
+      "baseline_distance": 2.1095013006066674,
+      "latitude": -16.364322897094755,
+      "longitude": -71.66600164851143
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 329.61641845703116,
+        "elevation_std_m": 98.79482680296493,
+        "slope_mean_deg": 2.5437732180723316,
+        "slope_p90_deg": 4.744059564951125,
+        "slope_std_deg": 1.8055238838606025,
+        "laplacian_rms_m": 29.04694638075637,
+        "detrended_rms_m": 53.7780884627857
+      },
+      "pca_distance": 2.162849218337303,
+      "baseline_distance": 2.1888938701477003,
+      "latitude": -24.415793897422276,
+      "longitude": -69.65350671182898
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 263.3237854003906,
+        "elevation_std_m": 84.2463027792657,
+        "slope_mean_deg": 2.694904052540095,
+        "slope_p90_deg": 5.642560568193104,
+        "slope_std_deg": 2.045527897107305,
+        "laplacian_rms_m": 37.5043942038608,
+        "detrended_rms_m": 55.26775987018658
+      },
+      "pca_distance": 2.173481838705112,
+      "baseline_distance": 2.179672934657155,
+      "latitude": -24.054469820552868,
+      "longitude": -69.55588035250452
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 349.3127441406243,
+        "elevation_std_m": 112.89920104888937,
+        "slope_mean_deg": 2.351887305905556,
+        "slope_p90_deg": 4.474609011876022,
+        "slope_std_deg": 1.9929910879607364,
+        "laplacian_rms_m": 25.944205698267268,
+        "detrended_rms_m": 50.56418132336907
+      },
+      "pca_distance": 2.217277376205291,
+      "baseline_distance": 2.2770689863892426,
+      "latitude": -24.325511906313647,
+      "longitude": -69.65368101225523
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 304.9412963867182,
+        "elevation_std_m": 98.7228131139083,
+        "slope_mean_deg": 2.6035221366948775,
+        "slope_p90_deg": 5.32388497955765,
+        "slope_std_deg": 1.9460773197345225,
+        "laplacian_rms_m": 25.17725093744617,
+        "detrended_rms_m": 67.14809148025137
+      },
+      "pca_distance": 2.2510964968605047,
+      "baseline_distance": 2.305721250733531,
+      "latitude": -24.144501298422785,
+      "longitude": -69.4572508048115
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 341.8694763183592,
+        "elevation_std_m": 102.85859147391882,
+        "slope_mean_deg": 2.916777986916538,
+        "slope_p90_deg": 4.903007484950285,
+        "slope_std_deg": 1.4768701084281088,
+        "laplacian_rms_m": 30.355046805764847,
+        "detrended_rms_m": 57.51946994711436
+      },
+      "pca_distance": 2.2727859561164414,
+      "baseline_distance": 2.2841579637750584,
+      "latitude": -24.415348004619016,
+      "longitude": -69.45631311624348
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 379.8766662597652,
+        "elevation_std_m": 122.43038959008167,
+        "slope_mean_deg": 2.4465046556286314,
+        "slope_p90_deg": 4.254934332939098,
+        "slope_std_deg": 1.9872261704934293,
+        "laplacian_rms_m": 21.02311752023729,
+        "detrended_rms_m": 46.580862776169994
+      },
+      "pca_distance": 2.28057411982826,
+      "baseline_distance": 2.362150180356104,
+      "latitude": -24.23522884074348,
+      "longitude": -69.65385466074844
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 319.47807617187493,
+        "elevation_std_m": 98.13115477165154,
+        "slope_mean_deg": 2.686038199200322,
+        "slope_p90_deg": 5.765262783948543,
+        "slope_std_deg": 2.2233485554384416,
+        "laplacian_rms_m": 38.324139988357615,
+        "detrended_rms_m": 44.69147718632937
+      },
+      "pca_distance": 2.2965793208664924,
+      "baseline_distance": 2.3241003901442365,
+      "latitude": -23.96437322701523,
+      "longitude": -69.65437171688676
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 276.0798675537108,
+        "elevation_std_m": 86.8974004957616,
+        "slope_mean_deg": 3.3809615980058614,
+        "slope_p90_deg": 6.321720568043454,
+        "slope_std_deg": 2.214268598435928,
+        "laplacian_rms_m": 63.96135827859274,
+        "detrended_rms_m": 49.82698402476578
+      },
+      "pca_distance": 2.574165130142307,
+      "baseline_distance": 2.604472222870691,
+      "latitude": -16.906581037842386,
+      "longitude": -71.75920691853018
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 446.03101806640586,
+        "elevation_std_m": 139.2874040798446,
+        "slope_mean_deg": 3.048792105792484,
+        "slope_p90_deg": 4.734616075510163,
+        "slope_std_deg": 1.7330403714871265,
+        "laplacian_rms_m": 40.17215762008624,
+        "detrended_rms_m": 35.233019912000394
+      },
+      "pca_distance": 2.6691256328999033,
+      "baseline_distance": 2.730876822993333,
+      "latitude": -16.63549731810347,
+      "longitude": -71.75940525330843
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 415.16958007812485,
+        "elevation_std_m": 134.96968622759042,
+        "slope_mean_deg": 3.5518232676658994,
+        "slope_p90_deg": 5.923858506116841,
+        "slope_std_deg": 2.005224431316591,
+        "laplacian_rms_m": 39.18725002458723,
+        "detrended_rms_m": 58.73710546009926
+      },
+      "pca_distance": 2.899850698726412,
+      "baseline_distance": 2.9131135179867824,
+      "latitude": -23.693508050690596,
+      "longitude": -69.65488298519128
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 387.3590393066405,
+        "elevation_std_m": 109.58133240154127,
+        "slope_mean_deg": 3.3442101389473993,
+        "slope_p90_deg": 7.273314574444807,
+        "slope_std_deg": 2.4705474126032096,
+        "laplacian_rms_m": 46.76400125088292,
+        "detrended_rms_m": 79.8706225931095
+      },
+      "pca_distance": 3.0375206789595866,
+      "baseline_distance": 3.0626630524531673,
+      "latitude": -23.963931470807395,
+      "longitude": -69.45787009664744
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 442.357299804687,
+        "elevation_std_m": 133.96634166534255,
+        "slope_mean_deg": 3.2281402938031487,
+        "slope_p90_deg": 5.837869454551766,
+        "slope_std_deg": 2.3720283879930353,
+        "laplacian_rms_m": 39.038234984961356,
+        "detrended_rms_m": 77.61695935390651
+      },
+      "pca_distance": 3.0657431718487893,
+      "baseline_distance": 3.1162438988235994,
+      "latitude": -23.783357385760656,
+      "longitude": -69.45848475837879
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 312.2414367675781,
+        "elevation_std_m": 98.32496746772372,
+        "slope_mean_deg": 4.132823789193173,
+        "slope_p90_deg": 7.713384020153287,
+        "slope_std_deg": 2.73601869679926,
+        "laplacian_rms_m": 60.47282787602547,
+        "detrended_rms_m": 68.67019851577486
+      },
+      "pca_distance": 3.1026694813892917,
+      "baseline_distance": 3.105812088208145,
+      "latitude": -24.32532116506382,
+      "longitude": -69.55515376020902
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 364.4699462890622,
+        "elevation_std_m": 110.93710237301528,
+        "slope_mean_deg": 4.3350627852364205,
+        "slope_p90_deg": 7.986049846014832,
+        "slope_std_deg": 2.654506549296683,
+        "laplacian_rms_m": 55.95558639269788,
+        "detrended_rms_m": 68.33130674700591
+      },
+      "pca_distance": 3.2280803744382154,
+      "baseline_distance": 3.2316586015835873,
+      "latitude": -24.325066844565708,
+      "longitude": -69.456626851208
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 443.6605407714841,
+        "elevation_std_m": 137.23119268591205,
+        "slope_mean_deg": 4.096191077342356,
+        "slope_p90_deg": 6.8006082577924545,
+        "slope_std_deg": 2.0661714920688317,
+        "laplacian_rms_m": 44.57538280176972,
+        "detrended_rms_m": 77.95233110357752
+      },
+      "pca_distance": 3.283246425637032,
+      "baseline_distance": 3.2931248913529156,
+      "latitude": -23.693319780304275,
+      "longitude": -69.55683650907032
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 451.9112060546872,
+        "elevation_std_m": 146.59693364212018,
+        "slope_mean_deg": 3.897895237293039,
+        "slope_p90_deg": 7.816856352835355,
+        "slope_std_deg": 2.4788774496346226,
+        "laplacian_rms_m": 40.48986333872166,
+        "detrended_rms_m": 63.09375493752878
+      },
+      "pca_distance": 3.304078705839957,
+      "baseline_distance": 3.3339849408590925,
+      "latitude": -23.964183902433053,
+      "longitude": -69.55612073906066
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 546.1840637207031,
+        "elevation_std_m": 167.184354192293,
+        "slope_mean_deg": 3.9073228984112576,
+        "slope_p90_deg": 5.686649880859125,
+        "slope_std_deg": 1.7444110348146722,
+        "laplacian_rms_m": 57.701188627571234,
+        "detrended_rms_m": 34.7876491110136
+      },
+      "pca_distance": 3.3524889887541334,
+      "baseline_distance": 3.442424468477477,
+      "latitude": -16.906369148393598,
+      "longitude": -71.57148305266698
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 374.5959167480469,
+        "elevation_std_m": 115.4047043662004,
+        "slope_mean_deg": 4.463745003851087,
+        "slope_p90_deg": 7.612778851521127,
+        "slope_std_deg": 2.696653148905529,
+        "laplacian_rms_m": 59.792030395265854,
+        "detrended_rms_m": 80.76402891280429
+      },
+      "pca_distance": 3.391145931315892,
+      "baseline_distance": 3.3969246344208477,
+      "latitude": -24.23478460817418,
+      "longitude": -69.45693941272462
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 547.1870971679684,
+        "elevation_std_m": 166.8945630449081,
+        "slope_mean_deg": 4.4748198316099215,
+        "slope_p90_deg": 6.716670723382115,
+        "slope_std_deg": 1.813484921895211,
+        "laplacian_rms_m": 72.17991117131422,
+        "detrended_rms_m": 44.53844792331876
+      },
+      "pca_distance": 3.6524803929726306,
+      "baseline_distance": 3.731450635488243,
+      "latitude": -16.816009171403934,
+      "longitude": -71.57163799847503
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 504.15924682617174,
+        "elevation_std_m": 149.64125626214405,
+        "slope_mean_deg": 3.6680264232332624,
+        "slope_p90_deg": 8.62041607932805,
+        "slope_std_deg": 3.042859400943047,
+        "laplacian_rms_m": 45.360761391194366,
+        "detrended_rms_m": 82.99629393719664
+      },
+      "pca_distance": 3.688345228850555,
+      "baseline_distance": 3.7454901027252805,
+      "latitude": -24.054659498108325,
+      "longitude": -69.65420001085195
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 521.5663452148436,
+        "elevation_std_m": 165.63152437723102,
+        "slope_mean_deg": 3.9165194748174113,
+        "slope_p90_deg": 8.483043618773307,
+        "slope_std_deg": 2.9866740489305066,
+        "laplacian_rms_m": 51.29259165752878,
+        "detrended_rms_m": 61.01944703003442
+      },
+      "pca_distance": 3.7182276423493605,
+      "baseline_distance": 3.7791450937554902,
+      "latitude": -24.144944703681514,
+      "longitude": -69.65402765954103
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 541.045263671874,
+        "elevation_std_m": 164.51584834123773,
+        "slope_mean_deg": 4.215426046299674,
+        "slope_p90_deg": 7.449687739847487,
+        "slope_std_deg": 2.4188998710244256,
+        "laplacian_rms_m": 34.31482569639513,
+        "detrended_rms_m": 99.35873485056612
+      },
+      "pca_distance": 3.8131384784978013,
+      "baseline_distance": 3.885112474416191,
+      "latitude": -24.14475467235945,
+      "longitude": -69.55563906257213
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 483.71260375976544,
+        "elevation_std_m": 147.66141011836243,
+        "slope_mean_deg": 4.957497059147892,
+        "slope_p90_deg": 8.45422837718606,
+        "slope_std_deg": 2.512874994136959,
+        "laplacian_rms_m": 91.13878589134073,
+        "detrended_rms_m": 53.39324060546934
+      },
+      "pca_distance": 3.885375669757458,
+      "baseline_distance": 3.975082227464593,
+      "latitude": -16.81613602235619,
+      "longitude": -71.66545560984721
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 443.4753723144528,
+        "elevation_std_m": 137.96277525173883,
+        "slope_mean_deg": 4.243791823606114,
+        "slope_p90_deg": 8.160822516748782,
+        "slope_std_deg": 2.763165299754154,
+        "laplacian_rms_m": 46.78453222257238,
+        "detrended_rms_m": 134.82004720605008
+      },
+      "pca_distance": 3.9267080122305664,
+      "baseline_distance": 4.088508000241035,
+      "latitude": -23.783608879287065,
+      "longitude": -69.55659881430216
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 544.0245422363278,
+        "elevation_std_m": 175.57925074764015,
+        "slope_mean_deg": 4.11958639367228,
+        "slope_p90_deg": 8.479855192235192,
+        "slope_std_deg": 3.2499662950421215,
+        "laplacian_rms_m": 51.94334116040594,
+        "detrended_rms_m": 75.98107122757996
+      },
+      "pca_distance": 3.9948529400949107,
+      "baseline_distance": 4.051910203481747,
+      "latitude": -23.873644958953708,
+      "longitude": -69.45817800431217
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 542.3215240478514,
+        "elevation_std_m": 167.54314391715639,
+        "slope_mean_deg": 4.532800081443315,
+        "slope_p90_deg": 8.827068176226488,
+        "slope_std_deg": 3.02659503368603,
+        "laplacian_rms_m": 48.87722905582335,
+        "detrended_rms_m": 83.84185247114443
+      },
+      "pca_distance": 4.033915645152909,
+      "baseline_distance": 4.067699441456715,
+      "latitude": -23.87408589340428,
+      "longitude": -69.65454277983774
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 317.7428222656248,
+        "elevation_std_m": 93.83052380457313,
+        "slope_mean_deg": 5.704313731951092,
+        "slope_p90_deg": 9.942506846029708,
+        "slope_std_deg": 3.2534576555259114,
+        "laplacian_rms_m": 102.6333193911381,
+        "detrended_rms_m": 82.85837672077638
+      },
+      "pca_distance": 4.089211527020938,
+      "baseline_distance": 4.16138085648324,
+      "latitude": -16.544924491625704,
+      "longitude": -71.57209871716077
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 410.1575012207027,
+        "elevation_std_m": 127.6131573714459,
+        "slope_mean_deg": 5.677777023401876,
+        "slope_p90_deg": 8.9511726495551,
+        "slope_std_deg": 2.5554716664770805,
+        "laplacian_rms_m": 116.38264443458127,
+        "detrended_rms_m": 74.3006154319458
+      },
+      "pca_distance": 4.1815810012589765,
+      "baseline_distance": 4.327445426658744,
+      "latitude": -16.45468708656808,
+      "longitude": -71.6658934157224
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 529.9214233398435,
+        "elevation_std_m": 174.54623320328562,
+        "slope_mean_deg": 4.795915485726102,
+        "slope_p90_deg": 9.78452057397654,
+        "slope_std_deg": 3.1609213888341268,
+        "laplacian_rms_m": 79.58189992709018,
+        "detrended_rms_m": 58.753092358429974
+      },
+      "pca_distance": 4.22227159949398,
+      "baseline_distance": 4.283864164383098,
+      "latitude": -16.45439372826702,
+      "longitude": -71.47860857088601
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 544.1337036132812,
+        "elevation_std_m": 164.9351907521043,
+        "slope_mean_deg": 5.084906652584385,
+        "slope_p90_deg": 9.399926329125242,
+        "slope_std_deg": 2.937025321990086,
+        "laplacian_rms_m": 91.67196458488984,
+        "detrended_rms_m": 62.96526442897368
+      },
+      "pca_distance": 4.303214051118741,
+      "baseline_distance": 4.366618063454338,
+      "latitude": -16.545134501813994,
+      "longitude": -71.75947077748864
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 490.54157714843745,
+        "elevation_std_m": 147.12456641934136,
+        "slope_mean_deg": 4.6918069980601995,
+        "slope_p90_deg": 10.393880492748382,
+        "slope_std_deg": 3.7580655872772146,
+        "laplacian_rms_m": 76.2365905660468,
+        "detrended_rms_m": 100.87919541294906
+      },
+      "pca_distance": 4.4336899433118235,
+      "baseline_distance": 4.446492081136417,
+      "latitude": -16.544756484258432,
+      "longitude": -71.47841287945374
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 520.6188598632804,
+        "elevation_std_m": 165.25091815565293,
+        "slope_mean_deg": 5.408051950970583,
+        "slope_p90_deg": 10.015944139467969,
+        "slope_std_deg": 3.221396766972022,
+        "laplacian_rms_m": 70.26966964946936,
+        "detrended_rms_m": 112.61255401402268
+      },
+      "pca_distance": 4.5961263570455095,
+      "baseline_distance": 4.610900984367963,
+      "latitude": -24.23503845485784,
+      "longitude": -69.55539686617578
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 506.8519195556638,
+        "elevation_std_m": 167.5069089239764,
+        "slope_mean_deg": 5.591417981236955,
+        "slope_p90_deg": 10.395205766101098,
+        "slope_std_deg": 3.5283890670145888,
+        "laplacian_rms_m": 111.90019377942161,
+        "detrended_rms_m": 85.17653711641968
+      },
+      "pca_distance": 4.829175330429597,
+      "baseline_distance": 4.884438638187645,
+      "latitude": -16.906496281930565,
+      "longitude": -71.66534493357814
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 480.35476684570307,
+        "elevation_std_m": 145.19489202543284,
+        "slope_mean_deg": 5.5044382184730285,
+        "slope_p90_deg": 11.902530400509335,
+        "slope_std_deg": 3.955821998176546,
+        "laplacian_rms_m": 128.36546413552838,
+        "detrended_rms_m": 88.09211124572704
+      },
+      "pca_distance": 5.039590553169168,
+      "baseline_distance": 5.120387804933094,
+      "latitude": -16.364406527288946,
+      "longitude": -71.75960094913005
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 468.7092407226556,
+        "elevation_std_m": 144.8231957810566,
+        "slope_mean_deg": 6.876725699469247,
+        "slope_p90_deg": 10.565242007541691,
+        "slope_std_deg": 2.8571271128524143,
+        "laplacian_rms_m": 114.22786180810013,
+        "detrended_rms_m": 127.6749206075239
+      },
+      "pca_distance": 5.081641381419646,
+      "baseline_distance": 5.181650357605281,
+      "latitude": -16.63511845696477,
+      "longitude": -71.47821631059338
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 741.2972900390621,
+        "elevation_std_m": 220.17857058345825,
+        "slope_mean_deg": 5.141329349397,
+        "slope_p90_deg": 9.172028712439172,
+        "slope_std_deg": 3.601764734387838,
+        "laplacian_rms_m": 68.99010708801876,
+        "detrended_rms_m": 90.0915373699705
+      },
+      "pca_distance": 5.095756220201099,
+      "baseline_distance": 5.162875363492004,
+      "latitude": -16.273957932977247,
+      "longitude": -71.66610939624933
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 653.3964355468747,
+        "elevation_std_m": 206.9460323336973,
+        "slope_mean_deg": 6.3702136193774725,
+        "slope_p90_deg": 11.181310455529916,
+        "slope_std_deg": 3.2342171177652026,
+        "laplacian_rms_m": 89.74433987181807,
+        "detrended_rms_m": 81.29516012057485
+      },
+      "pca_distance": 5.203486536281987,
+      "baseline_distance": 5.2310888455124935,
+      "latitude": -16.54505049760812,
+      "longitude": -71.6657846966777
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 560.027780151367,
+        "elevation_std_m": 165.67432898261526,
+        "slope_mean_deg": 6.155965697784731,
+        "slope_p90_deg": 11.962962991496603,
+        "slope_std_deg": 3.816513759498625,
+        "laplacian_rms_m": 119.00541812859673,
+        "detrended_rms_m": 88.87785014908674
+      },
+      "pca_distance": 5.23606878800688,
+      "baseline_distance": 5.2906005217240795,
+      "latitude": -16.906199637628404,
+      "longitude": -71.47762131741125
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 441.38505859375005,
+        "elevation_std_m": 141.62498974757082,
+        "slope_mean_deg": 5.064701950188563,
+        "slope_p90_deg": 13.422381099672371,
+        "slope_std_deg": 5.219124500853463,
+        "laplacian_rms_m": 107.67189611727332,
+        "detrended_rms_m": 105.00585985120156
+      },
+      "pca_distance": 5.25394039243723,
+      "baseline_distance": 5.270069965890924,
+      "latitude": -16.454561361321655,
+      "longitude": -71.57225092287395
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 577.230004882812,
+        "elevation_std_m": 185.63745973407296,
+        "slope_mean_deg": 7.085169998391584,
+        "slope_p90_deg": 12.485047444239628,
+        "slope_std_deg": 3.731156535956091,
+        "laplacian_rms_m": 112.4145554688205,
+        "detrended_rms_m": 96.51558296011794
+      },
+      "pca_distance": 5.520697500030451,
+      "baseline_distance": 5.552726904089398,
+      "latitude": -16.45477090361591,
+      "longitude": -71.75953600918673
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 572.9538452148435,
+        "elevation_std_m": 171.82522108476053,
+        "slope_mean_deg": 6.265250369576582,
+        "slope_p90_deg": 13.126174639440435,
+        "slope_std_deg": 4.49230713648173,
+        "laplacian_rms_m": 108.60987500204544,
+        "detrended_rms_m": 103.0404978092757
+      },
+      "pca_distance": 5.529657381936593,
+      "baseline_distance": 5.5433051096043044,
+      "latitude": -16.274041376620723,
+      "longitude": -71.75966559804134
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 663.1983581542968,
+        "elevation_std_m": 198.7982572651153,
+        "slope_mean_deg": 6.316611080052889,
+        "slope_p90_deg": 13.242046649317647,
+        "slope_std_deg": 4.21897749527743,
+        "laplacian_rms_m": 106.91904625961739,
+        "detrended_rms_m": 87.46774519588345
+      },
+      "pca_distance": 5.632450960977027,
+      "baseline_distance": 5.677844096983894,
+      "latitude": -16.725774969271455,
+      "longitude": -71.6655657949642
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 665.0076782226562,
+        "elevation_std_m": 203.94937608156118,
+        "slope_mean_deg": 7.491080581135934,
+        "slope_p90_deg": 12.555920340604619,
+        "slope_std_deg": 3.69197533978472,
+        "laplacian_rms_m": 123.82350136524772,
+        "detrended_rms_m": 93.68749630690364
+      },
+      "pca_distance": 5.887403025071376,
+      "baseline_distance": 5.946901384219909,
+      "latitude": -16.815840037416304,
+      "longitude": -71.4778205317896
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 1004.0413208007806,
+        "elevation_std_m": 301.2746999276008,
+        "slope_mean_deg": 6.195507318457966,
+        "slope_p90_deg": 9.265300037020138,
+        "slope_std_deg": 2.4926743904171085,
+        "laplacian_rms_m": 61.53490363667979,
+        "detrended_rms_m": 74.15687144833474
+      },
+      "pca_distance": 6.131492975713224,
+      "baseline_distance": 6.222741395046459,
+      "latitude": -16.36403019277695,
+      "longitude": -71.47880338707233
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 858.2412353515624,
+        "elevation_std_m": 259.15638117862767,
+        "slope_mean_deg": 5.358292589229053,
+        "slope_p90_deg": 13.074495988983603,
+        "slope_std_deg": 4.802765550804026,
+        "laplacian_rms_m": 59.73873429609042,
+        "detrended_rms_m": 164.5461401257655
+      },
+      "pca_distance": 6.426720118832076,
+      "baseline_distance": 6.626119278199083,
+      "latitude": -16.092934947296495,
+      "longitude": -71.47938260576643
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 653.184814453125,
+        "elevation_std_m": 198.8798973896955,
+        "slope_mean_deg": 8.708567664326564,
+        "slope_p90_deg": 14.365030853715973,
+        "slope_std_deg": 4.112147573593864,
+        "laplacian_rms_m": 144.79037230379637,
+        "detrended_rms_m": 109.43622722071885
+      },
+      "pca_distance": 6.509812534375305,
+      "baseline_distance": 6.594577568306929,
+      "latitude": -16.183675455406718,
+      "longitude": -71.75972995663868
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 563.3536621093748,
+        "elevation_std_m": 170.46725714602937,
+        "slope_mean_deg": 8.340703351029882,
+        "slope_p90_deg": 15.695359312291803,
+        "slope_std_deg": 4.793201488872238,
+        "laplacian_rms_m": 139.99486682855354,
+        "detrended_rms_m": 133.70450583759003
+      },
+      "pca_distance": 6.570685989504469,
+      "baseline_distance": 6.6080947647064345,
+      "latitude": -16.09322569600529,
+      "longitude": -71.66632344135111
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 737.5689086914061,
+        "elevation_std_m": 225.28341664213704,
+        "slope_mean_deg": 8.695888389287898,
+        "slope_p90_deg": 14.16620928018675,
+        "slope_std_deg": 3.959497172330851,
+        "laplacian_rms_m": 149.49436451884696,
+        "detrended_rms_m": 113.37211134294166
+      },
+      "pca_distance": 6.802958880733512,
+      "baseline_distance": 6.886014937844566,
+      "latitude": -16.635286839256448,
+      "longitude": -71.57194582899719
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 759.5242065429686,
+        "elevation_std_m": 228.9381708231232,
+        "slope_mean_deg": 9.000205075840805,
+        "slope_p90_deg": 14.357241069215979,
+        "slope_std_deg": 3.9191012508139584,
+        "laplacian_rms_m": 130.50898167685972,
+        "detrended_rms_m": 133.24435655327545
+      },
+      "pca_distance": 6.906879783492419,
+      "baseline_distance": 6.936197145059415,
+      "latitude": -16.09330876745023,
+      "longitude": -71.75979402563551
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 746.7583129882805,
+        "elevation_std_m": 219.811742446559,
+        "slope_mean_deg": 8.703071291418475,
+        "slope_p90_deg": 14.160761982503852,
+        "slope_std_deg": 3.6711527783156845,
+        "laplacian_rms_m": 159.1200398177686,
+        "detrended_rms_m": 125.34227682487118
+      },
+      "pca_distance": 6.908315417962459,
+      "baseline_distance": 7.015229036736303,
+      "latitude": -16.635413126433665,
+      "longitude": -71.66567549016501
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 851.676647949218,
+        "elevation_std_m": 250.87773167804804,
+        "slope_mean_deg": 7.753909678311458,
+        "slope_p90_deg": 14.279278274767135,
+        "slope_std_deg": 4.354010125817252,
+        "laplacian_rms_m": 112.87212411077552,
+        "detrended_rms_m": 150.8884924794681
+      },
+      "pca_distance": 7.048218454919247,
+      "baseline_distance": 7.058878666392018,
+      "latitude": -16.1835921980125,
+      "longitude": -71.66621666013285
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 651.9671508789058,
+        "elevation_std_m": 199.18562535308524,
+        "slope_mean_deg": 10.571864236128654,
+        "slope_p90_deg": 17.46558951989256,
+        "slope_std_deg": 5.104247411887739,
+        "laplacian_rms_m": 182.44663046776387,
+        "detrended_rms_m": 136.9680736258013
+      },
+      "pca_distance": 7.729888353595992,
+      "baseline_distance": 7.866833574537251,
+      "latitude": -16.725479642607578,
+      "longitude": -71.4780188621088
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 971.9518249511718,
+        "elevation_std_m": 285.1267771012513,
+        "slope_mean_deg": 9.107079967382397,
+        "slope_p90_deg": 16.53862320668223,
+        "slope_std_deg": 5.223591931149016,
+        "laplacian_rms_m": 101.79249460569875,
+        "detrended_rms_m": 160.74288879196507
+      },
+      "pca_distance": 7.91816382908472,
+      "baseline_distance": 7.943107803841652,
+      "latitude": -23.783797500288266,
+      "longitude": -69.65471320188394
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 1091.9792358398436,
+        "elevation_std_m": 333.77141808011487,
+        "slope_mean_deg": 10.635473550275215,
+        "slope_p90_deg": 16.3886017257661,
+        "slope_std_deg": 4.2609889488348,
+        "laplacian_rms_m": 162.98730898642856,
+        "detrended_rms_m": 113.07850901877421
+      },
+      "pca_distance": 8.627235590762611,
+      "baseline_distance": 8.733208908689697,
+      "latitude": -16.725648400438367,
+      "longitude": -71.57179225667501
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 1361.9493530273437,
+        "elevation_std_m": 417.4887452065533,
+        "slope_mean_deg": 11.588903893131135,
+        "slope_p90_deg": 18.46187176440637,
+        "slope_std_deg": 5.071702838875493,
+        "laplacian_rms_m": 134.7177873663098,
+        "detrended_rms_m": 177.13622920672302
+      },
+      "pca_distance": 10.279324945840113,
+      "baseline_distance": 10.293783297325165,
+      "latitude": -16.273832767835223,
+      "longitude": -71.57255329372705
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 1387.523217773436,
+        "elevation_std_m": 437.4030310343366,
+        "slope_mean_deg": 11.553629411060689,
+        "slope_p90_deg": 21.582793495445383,
+        "slope_std_deg": 6.515965905129895,
+        "laplacian_rms_m": 142.7043626843124,
+        "detrended_rms_m": 192.46691902345844
+      },
+      "pca_distance": 10.953769579774363,
+      "baseline_distance": 10.994985404374846,
+      "latitude": -16.183300798485693,
+      "longitude": -71.47919040236535
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 1699.0181762695306,
+        "elevation_std_m": 501.37128578733734,
+        "slope_mean_deg": 10.872728065875524,
+        "slope_p90_deg": 19.21354428628257,
+        "slope_std_deg": 6.0894384656302325,
+        "laplacian_rms_m": 100.80779171253491,
+        "detrended_rms_m": 262.21681644886473
+      },
+      "pca_distance": 11.885289882790769,
+      "baseline_distance": 12.08594102650719,
+      "latitude": -16.09310108915895,
+      "longitude": -71.57285295500371
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 1787.9848022460928,
+        "elevation_std_m": 575.9286758626647,
+        "slope_mean_deg": 16.225010694692887,
+        "slope_p90_deg": 26.32697797410173,
+        "slope_std_deg": 6.521735111428097,
+        "laplacian_rms_m": 144.08229213836773,
+        "detrended_rms_m": 271.4740807103686
+      },
+      "pca_distance": 14.148995188102472,
+      "baseline_distance": 14.192983819626564,
+      "latitude": -16.18346731224331,
+      "longitude": -71.57270346222876
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 1582.5672729492185,
+        "elevation_std_m": 504.18972306612943,
+        "slope_mean_deg": 15.812895801755975,
+        "slope_p90_deg": 26.132989246312754,
+        "slope_std_deg": 7.172215478236536,
+        "laplacian_rms_m": 177.106505572036,
+        "detrended_rms_m": 361.0224019377148
+      },
+      "pca_distance": 14.170201701925325,
+      "baseline_distance": 14.312746812234519,
+      "latitude": -16.27366588158247,
+      "longitude": -71.47899733018073
+    }
+  ],
+  "baseline_ranking": [
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 128.11180114746094,
+        "elevation_std_m": 39.48887286884069,
+        "slope_mean_deg": 0.876284981801778,
+        "slope_p90_deg": 1.4435424467359435,
+        "slope_std_deg": 0.46677159603339363,
+        "laplacian_rms_m": 3.7526620979281073,
+        "detrended_rms_m": 16.49372153931698
+      },
+      "pca_distance": 0.40355402425950027,
+      "baseline_distance": 0.42212435981387936,
+      "latitude": -23.87421187541273,
+      "longitude": -69.75272557260566
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 76.51563720703122,
+        "elevation_std_m": 24.41890691989232,
+        "slope_mean_deg": 0.8538866851728105,
+        "slope_p90_deg": 1.3878235720677203,
+        "slope_std_deg": 0.8966449805123085,
+        "laplacian_rms_m": 16.56339584003043,
+        "detrended_rms_m": 17.60976485157586
+      },
+      "pca_distance": 0.39750945043534175,
+      "baseline_distance": 0.42717454146855305,
+      "latitude": -24.145071391643626,
+      "longitude": -69.75241649880537
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 122.09450073242186,
+        "elevation_std_m": 38.35514590919538,
+        "slope_mean_deg": 1.0366446593022183,
+        "slope_p90_deg": 1.7886211017566882,
+        "slope_std_deg": 0.5359872292496407,
+        "laplacian_rms_m": 17.0542335018113,
+        "detrended_rms_m": 13.730466256840181
+      },
+      "pca_distance": 0.4748940428017768,
+      "baseline_distance": 0.5047970173308093,
+      "latitude": -24.41592129612004,
+      "longitude": -69.75210392852918
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 124.49812011718745,
+        "elevation_std_m": 39.063713485355436,
+        "slope_mean_deg": 1.107487784503403,
+        "slope_p90_deg": 1.8874071811527136,
+        "slope_std_deg": 0.5693749332740917,
+        "laplacian_rms_m": 15.324071126858037,
+        "detrended_rms_m": 13.39738427501237
+      },
+      "pca_distance": 0.4906453477059108,
+      "baseline_distance": 0.510077576194742,
+      "latitude": -24.325639067564147,
+      "longitude": -69.75220850933759
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 154.10194091796865,
+        "elevation_std_m": 48.389448363656705,
+        "slope_mean_deg": 0.9647577694755772,
+        "slope_p90_deg": 1.171426669555659,
+        "slope_std_deg": 0.19750416851010022,
+        "laplacian_rms_m": 5.508551705898852,
+        "detrended_rms_m": 5.137584377804386
+      },
+      "pca_distance": 0.5369771371548824,
+      "baseline_distance": 0.5666032411125687,
+      "latitude": -23.964499443814262,
+      "longitude": -69.75262293429725
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 148.22523803710936,
+        "elevation_std_m": 40.52299137983287,
+        "slope_mean_deg": 1.2243232860168822,
+        "slope_p90_deg": 2.495962735782383,
+        "slope_std_deg": 0.9203382835037781,
+        "laplacian_rms_m": 18.299216173480563,
+        "detrended_rms_m": 19.313369678605
+      },
+      "pca_distance": 0.7118634976445903,
+      "baseline_distance": 0.7261759541558462,
+      "latitude": -24.506202447794074,
+      "longitude": -69.75199895521034
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 129.88023681640624,
+        "elevation_std_m": 42.06694838067256,
+        "slope_mean_deg": 1.4227100614452606,
+        "slope_p90_deg": 2.951942574825624,
+        "slope_std_deg": 1.1935210194310073,
+        "laplacian_rms_m": 24.069817415311206,
+        "detrended_rms_m": 30.866525905054242
+      },
+      "pca_distance": 0.9487312936800179,
+      "baseline_distance": 0.9541201061763178,
+      "latitude": -24.50607481111038,
+      "longitude": -69.6533317572237
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 116.99342041015622,
+        "elevation_std_m": 41.3641464030183,
+        "slope_mean_deg": 1.4393126275749488,
+        "slope_p90_deg": 3.2412833565987405,
+        "slope_std_deg": 1.387029240111305,
+        "laplacian_rms_m": 25.70146693628586,
+        "detrended_rms_m": 25.603329085992595
+      },
+      "pca_distance": 0.9781567094931777,
+      "baseline_distance": 0.9848691014231358,
+      "latitude": -24.05478595022445,
+      "longitude": -69.7525199101356
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 178.28734130859368,
+        "elevation_std_m": 56.611192002302424,
+        "slope_mean_deg": 1.7342400553951716,
+        "slope_p90_deg": 3.4873871169207744,
+        "slope_std_deg": 1.2158859791416596,
+        "laplacian_rms_m": 26.09521809570012,
+        "detrended_rms_m": 23.92648898525177
+      },
+      "pca_distance": 1.1345014005512553,
+      "baseline_distance": 1.1484798802097371,
+      "latitude": -23.693633564687747,
+      "longitude": -69.75292969688473
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 172.3634826660156,
+        "elevation_std_m": 53.31566066202576,
+        "slope_mean_deg": 1.7569197927543914,
+        "slope_p90_deg": 3.6913482667121866,
+        "slope_std_deg": 1.3263536704526966,
+        "laplacian_rms_m": 31.069005213506692,
+        "detrended_rms_m": 26.916738537323962
+      },
+      "pca_distance": 1.2136674799082443,
+      "baseline_distance": 1.2280349192546922,
+      "latitude": -24.50588335671557,
+      "longitude": -69.55466480704399
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 285.8857727050779,
+        "elevation_std_m": 87.93098807413345,
+        "slope_mean_deg": 1.7937730275260544,
+        "slope_p90_deg": 2.6806206130527803,
+        "slope_std_deg": 0.6853015495999052,
+        "laplacian_rms_m": 10.596291326311867,
+        "detrended_rms_m": 31.998772875770392
+      },
+      "pca_distance": 1.4379254449482894,
+      "baseline_distance": 1.4592746472175055,
+      "latitude": -16.816220589877467,
+      "longitude": -71.75927332456838
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 288.9864410400389,
+        "elevation_std_m": 92.37024405266094,
+        "slope_mean_deg": 1.9717169700776451,
+        "slope_p90_deg": 2.784096745750331,
+        "slope_std_deg": 0.7479334824135373,
+        "laplacian_rms_m": 10.480628567428077,
+        "detrended_rms_m": 23.27700271836545
+      },
+      "pca_distance": 1.4623058012239851,
+      "baseline_distance": 1.488967124560485,
+      "latitude": -23.783923248030202,
+      "longitude": -69.75282782636829
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 164.6854858398437,
+        "elevation_std_m": 56.24356981887008,
+        "slope_mean_deg": 1.790768833993067,
+        "slope_p90_deg": 4.062815248282309,
+        "slope_std_deg": 2.102402072793937,
+        "laplacian_rms_m": 35.82095105601857,
+        "detrended_rms_m": 29.535913886683794
+      },
+      "pca_distance": 1.4866258754283395,
+      "baseline_distance": 1.5225422469535437,
+      "latitude": -24.2353557650829,
+      "longitude": -69.75231269898316
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 9,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 186.2897399902343,
+        "elevation_std_m": 55.02823882590734,
+        "slope_mean_deg": 2.3884720563791535,
+        "slope_p90_deg": 4.2072666877289,
+        "slope_std_deg": 1.3964900158316689,
+        "laplacian_rms_m": 33.165694171263866,
+        "detrended_rms_m": 44.572920092962
+      },
+      "pca_distance": 1.5366882249993332,
+      "baseline_distance": 1.5461162741062775,
+      "latitude": -24.50562808536654,
+      "longitude": -69.45599820378848
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 332.51165771484364,
+        "elevation_std_m": 100.13277349576563,
+        "slope_mean_deg": 2.038437140418615,
+        "slope_p90_deg": 2.8439318778299567,
+        "slope_std_deg": 0.5207363424962994,
+        "laplacian_rms_m": 12.016749373651495,
+        "detrended_rms_m": 14.69492250192184
+      },
+      "pca_distance": 1.6053355650846879,
+      "baseline_distance": 1.6509892899137388,
+      "latitude": -16.725859348712568,
+      "longitude": -71.75933943591394
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 243.7566406249996,
+        "elevation_std_m": 75.70050205203782,
+        "slope_mean_deg": 2.2823666707686874,
+        "slope_p90_deg": 4.43466816945845,
+        "slope_std_deg": 1.4651496968146194,
+        "laplacian_rms_m": 29.050541696760686,
+        "detrended_rms_m": 58.13431261616288
+      },
+      "pca_distance": 1.8049495818838899,
+      "baseline_distance": 1.8337442533387762,
+      "latitude": -24.415602800003935,
+      "longitude": -69.55490974154654
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 249.5733459472654,
+        "elevation_std_m": 76.52666241283097,
+        "slope_mean_deg": 2.7797535567825595,
+        "slope_p90_deg": 4.511646572105618,
+        "slope_std_deg": 1.2754774675840257,
+        "laplacian_rms_m": 31.616416144438006,
+        "detrended_rms_m": 63.95539262857738
+      },
+      "pca_distance": 1.932701818663653,
+      "baseline_distance": 1.9738434300062693,
+      "latitude": -23.693068754260036,
+      "longitude": -69.45879036274572
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 307.932470703125,
+        "elevation_std_m": 98.07791724008395,
+        "slope_mean_deg": 2.6167272112086186,
+        "slope_p90_deg": 4.612133402211996,
+        "slope_std_deg": 1.413014456466647,
+        "laplacian_rms_m": 33.35236241025216,
+        "detrended_rms_m": 41.17489804915701
+      },
+      "pca_distance": 2.0140973256173877,
+      "baseline_distance": 2.0208526170089645,
+      "latitude": -24.05421691830059,
+      "longitude": -69.4575610314625
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 293.9176696777343,
+        "elevation_std_m": 88.62997493570113,
+        "slope_mean_deg": 2.2576766375810706,
+        "slope_p90_deg": 4.472643896251173,
+        "slope_std_deg": 1.7440578957330843,
+        "laplacian_rms_m": 25.44513028073424,
+        "detrended_rms_m": 61.389431403810924
+      },
+      "pca_distance": 1.9984118789401648,
+      "baseline_distance": 2.0488221200334378,
+      "latitude": -23.87389692100567,
+      "longitude": -69.55636022530969
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 354.83457031249986,
+        "elevation_std_m": 110.22879892028593,
+        "slope_mean_deg": 2.5658557232256,
+        "slope_p90_deg": 3.39938465205735,
+        "slope_std_deg": 1.2374921840477058,
+        "laplacian_rms_m": 41.06414327116515,
+        "detrended_rms_m": 23.910627038426036
+      },
+      "pca_distance": 2.031030421899689,
+      "baseline_distance": 2.1060354485794464,
+      "latitude": -16.364197452127726,
+      "longitude": -71.57240244783395
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 391.426330566406,
+        "elevation_std_m": 116.9397347005645,
+        "slope_mean_deg": 2.5761271910967385,
+        "slope_p90_deg": 3.3211646523135885,
+        "slope_std_deg": 0.5544006162409585,
+        "laplacian_rms_m": 30.693074139813238,
+        "detrended_rms_m": 17.127086927627637
+      },
+      "pca_distance": 2.0464401911089727,
+      "baseline_distance": 2.1095013006066674,
+      "latitude": -16.364322897094755,
+      "longitude": -71.66600164851143
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 263.3237854003906,
+        "elevation_std_m": 84.2463027792657,
+        "slope_mean_deg": 2.694904052540095,
+        "slope_p90_deg": 5.642560568193104,
+        "slope_std_deg": 2.045527897107305,
+        "laplacian_rms_m": 37.5043942038608,
+        "detrended_rms_m": 55.26775987018658
+      },
+      "pca_distance": 2.173481838705112,
+      "baseline_distance": 2.179672934657155,
+      "latitude": -24.054469820552868,
+      "longitude": -69.55588035250452
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 329.61641845703116,
+        "elevation_std_m": 98.79482680296493,
+        "slope_mean_deg": 2.5437732180723316,
+        "slope_p90_deg": 4.744059564951125,
+        "slope_std_deg": 1.8055238838606025,
+        "laplacian_rms_m": 29.04694638075637,
+        "detrended_rms_m": 53.7780884627857
+      },
+      "pca_distance": 2.162849218337303,
+      "baseline_distance": 2.1888938701477003,
+      "latitude": -24.415793897422276,
+      "longitude": -69.65350671182898
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 349.3127441406243,
+        "elevation_std_m": 112.89920104888937,
+        "slope_mean_deg": 2.351887305905556,
+        "slope_p90_deg": 4.474609011876022,
+        "slope_std_deg": 1.9929910879607364,
+        "laplacian_rms_m": 25.944205698267268,
+        "detrended_rms_m": 50.56418132336907
+      },
+      "pca_distance": 2.217277376205291,
+      "baseline_distance": 2.2770689863892426,
+      "latitude": -24.325511906313647,
+      "longitude": -69.65368101225523
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 8,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 341.8694763183592,
+        "elevation_std_m": 102.85859147391882,
+        "slope_mean_deg": 2.916777986916538,
+        "slope_p90_deg": 4.903007484950285,
+        "slope_std_deg": 1.4768701084281088,
+        "laplacian_rms_m": 30.355046805764847,
+        "detrended_rms_m": 57.51946994711436
+      },
+      "pca_distance": 2.2727859561164414,
+      "baseline_distance": 2.2841579637750584,
+      "latitude": -24.415348004619016,
+      "longitude": -69.45631311624348
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 304.9412963867182,
+        "elevation_std_m": 98.7228131139083,
+        "slope_mean_deg": 2.6035221366948775,
+        "slope_p90_deg": 5.32388497955765,
+        "slope_std_deg": 1.9460773197345225,
+        "laplacian_rms_m": 25.17725093744617,
+        "detrended_rms_m": 67.14809148025137
+      },
+      "pca_distance": 2.2510964968605047,
+      "baseline_distance": 2.305721250733531,
+      "latitude": -24.144501298422785,
+      "longitude": -69.4572508048115
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 319.47807617187493,
+        "elevation_std_m": 98.13115477165154,
+        "slope_mean_deg": 2.686038199200322,
+        "slope_p90_deg": 5.765262783948543,
+        "slope_std_deg": 2.2233485554384416,
+        "laplacian_rms_m": 38.324139988357615,
+        "detrended_rms_m": 44.69147718632937
+      },
+      "pca_distance": 2.2965793208664924,
+      "baseline_distance": 2.3241003901442365,
+      "latitude": -23.96437322701523,
+      "longitude": -69.65437171688676
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 379.8766662597652,
+        "elevation_std_m": 122.43038959008167,
+        "slope_mean_deg": 2.4465046556286314,
+        "slope_p90_deg": 4.254934332939098,
+        "slope_std_deg": 1.9872261704934293,
+        "laplacian_rms_m": 21.02311752023729,
+        "detrended_rms_m": 46.580862776169994
+      },
+      "pca_distance": 2.28057411982826,
+      "baseline_distance": 2.362150180356104,
+      "latitude": -24.23522884074348,
+      "longitude": -69.65385466074844
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 276.0798675537108,
+        "elevation_std_m": 86.8974004957616,
+        "slope_mean_deg": 3.3809615980058614,
+        "slope_p90_deg": 6.321720568043454,
+        "slope_std_deg": 2.214268598435928,
+        "laplacian_rms_m": 63.96135827859274,
+        "detrended_rms_m": 49.82698402476578
+      },
+      "pca_distance": 2.574165130142307,
+      "baseline_distance": 2.604472222870691,
+      "latitude": -16.906581037842386,
+      "longitude": -71.75920691853018
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 446.03101806640586,
+        "elevation_std_m": 139.2874040798446,
+        "slope_mean_deg": 3.048792105792484,
+        "slope_p90_deg": 4.734616075510163,
+        "slope_std_deg": 1.7330403714871265,
+        "laplacian_rms_m": 40.17215762008624,
+        "detrended_rms_m": 35.233019912000394
+      },
+      "pca_distance": 2.6691256328999033,
+      "baseline_distance": 2.730876822993333,
+      "latitude": -16.63549731810347,
+      "longitude": -71.75940525330843
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 415.16958007812485,
+        "elevation_std_m": 134.96968622759042,
+        "slope_mean_deg": 3.5518232676658994,
+        "slope_p90_deg": 5.923858506116841,
+        "slope_std_deg": 2.005224431316591,
+        "laplacian_rms_m": 39.18725002458723,
+        "detrended_rms_m": 58.73710546009926
+      },
+      "pca_distance": 2.899850698726412,
+      "baseline_distance": 2.9131135179867824,
+      "latitude": -23.693508050690596,
+      "longitude": -69.65488298519128
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 387.3590393066405,
+        "elevation_std_m": 109.58133240154127,
+        "slope_mean_deg": 3.3442101389473993,
+        "slope_p90_deg": 7.273314574444807,
+        "slope_std_deg": 2.4705474126032096,
+        "laplacian_rms_m": 46.76400125088292,
+        "detrended_rms_m": 79.8706225931095
+      },
+      "pca_distance": 3.0375206789595866,
+      "baseline_distance": 3.0626630524531673,
+      "latitude": -23.963931470807395,
+      "longitude": -69.45787009664744
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 312.2414367675781,
+        "elevation_std_m": 98.32496746772372,
+        "slope_mean_deg": 4.132823789193173,
+        "slope_p90_deg": 7.713384020153287,
+        "slope_std_deg": 2.73601869679926,
+        "laplacian_rms_m": 60.47282787602547,
+        "detrended_rms_m": 68.67019851577486
+      },
+      "pca_distance": 3.1026694813892917,
+      "baseline_distance": 3.105812088208145,
+      "latitude": -24.32532116506382,
+      "longitude": -69.55515376020902
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 442.357299804687,
+        "elevation_std_m": 133.96634166534255,
+        "slope_mean_deg": 3.2281402938031487,
+        "slope_p90_deg": 5.837869454551766,
+        "slope_std_deg": 2.3720283879930353,
+        "laplacian_rms_m": 39.038234984961356,
+        "detrended_rms_m": 77.61695935390651
+      },
+      "pca_distance": 3.0657431718487893,
+      "baseline_distance": 3.1162438988235994,
+      "latitude": -23.783357385760656,
+      "longitude": -69.45848475837879
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 7,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 364.4699462890622,
+        "elevation_std_m": 110.93710237301528,
+        "slope_mean_deg": 4.3350627852364205,
+        "slope_p90_deg": 7.986049846014832,
+        "slope_std_deg": 2.654506549296683,
+        "laplacian_rms_m": 55.95558639269788,
+        "detrended_rms_m": 68.33130674700591
+      },
+      "pca_distance": 3.2280803744382154,
+      "baseline_distance": 3.2316586015835873,
+      "latitude": -24.325066844565708,
+      "longitude": -69.456626851208
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 0,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 443.6605407714841,
+        "elevation_std_m": 137.23119268591205,
+        "slope_mean_deg": 4.096191077342356,
+        "slope_p90_deg": 6.8006082577924545,
+        "slope_std_deg": 2.0661714920688317,
+        "laplacian_rms_m": 44.57538280176972,
+        "detrended_rms_m": 77.95233110357752
+      },
+      "pca_distance": 3.283246425637032,
+      "baseline_distance": 3.2931248913529156,
+      "latitude": -23.693319780304275,
+      "longitude": -69.55683650907032
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 3,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 451.9112060546872,
+        "elevation_std_m": 146.59693364212018,
+        "slope_mean_deg": 3.897895237293039,
+        "slope_p90_deg": 7.816856352835355,
+        "slope_std_deg": 2.4788774496346226,
+        "laplacian_rms_m": 40.48986333872166,
+        "detrended_rms_m": 63.09375493752878
+      },
+      "pca_distance": 3.304078705839957,
+      "baseline_distance": 3.3339849408590925,
+      "latitude": -23.964183902433053,
+      "longitude": -69.55612073906066
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 374.5959167480469,
+        "elevation_std_m": 115.4047043662004,
+        "slope_mean_deg": 4.463745003851087,
+        "slope_p90_deg": 7.612778851521127,
+        "slope_std_deg": 2.696653148905529,
+        "laplacian_rms_m": 59.792030395265854,
+        "detrended_rms_m": 80.76402891280429
+      },
+      "pca_distance": 3.391145931315892,
+      "baseline_distance": 3.3969246344208477,
+      "latitude": -24.23478460817418,
+      "longitude": -69.45693941272462
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 546.1840637207031,
+        "elevation_std_m": 167.184354192293,
+        "slope_mean_deg": 3.9073228984112576,
+        "slope_p90_deg": 5.686649880859125,
+        "slope_std_deg": 1.7444110348146722,
+        "laplacian_rms_m": 57.701188627571234,
+        "detrended_rms_m": 34.7876491110136
+      },
+      "pca_distance": 3.3524889887541334,
+      "baseline_distance": 3.442424468477477,
+      "latitude": -16.906369148393598,
+      "longitude": -71.57148305266698
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 547.1870971679684,
+        "elevation_std_m": 166.8945630449081,
+        "slope_mean_deg": 4.4748198316099215,
+        "slope_p90_deg": 6.716670723382115,
+        "slope_std_deg": 1.813484921895211,
+        "laplacian_rms_m": 72.17991117131422,
+        "detrended_rms_m": 44.53844792331876
+      },
+      "pca_distance": 3.6524803929726306,
+      "baseline_distance": 3.731450635488243,
+      "latitude": -16.816009171403934,
+      "longitude": -71.57163799847503
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 4,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 504.15924682617174,
+        "elevation_std_m": 149.64125626214405,
+        "slope_mean_deg": 3.6680264232332624,
+        "slope_p90_deg": 8.62041607932805,
+        "slope_std_deg": 3.042859400943047,
+        "laplacian_rms_m": 45.360761391194366,
+        "detrended_rms_m": 82.99629393719664
+      },
+      "pca_distance": 3.688345228850555,
+      "baseline_distance": 3.7454901027252805,
+      "latitude": -24.054659498108325,
+      "longitude": -69.65420001085195
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 521.5663452148436,
+        "elevation_std_m": 165.63152437723102,
+        "slope_mean_deg": 3.9165194748174113,
+        "slope_p90_deg": 8.483043618773307,
+        "slope_std_deg": 2.9866740489305066,
+        "laplacian_rms_m": 51.29259165752878,
+        "detrended_rms_m": 61.01944703003442
+      },
+      "pca_distance": 3.7182276423493605,
+      "baseline_distance": 3.7791450937554902,
+      "latitude": -24.144944703681514,
+      "longitude": -69.65402765954103
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 5,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 541.045263671874,
+        "elevation_std_m": 164.51584834123773,
+        "slope_mean_deg": 4.215426046299674,
+        "slope_p90_deg": 7.449687739847487,
+        "slope_std_deg": 2.4188998710244256,
+        "laplacian_rms_m": 34.31482569639513,
+        "detrended_rms_m": 99.35873485056612
+      },
+      "pca_distance": 3.8131384784978013,
+      "baseline_distance": 3.885112474416191,
+      "latitude": -24.14475467235945,
+      "longitude": -69.55563906257213
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 483.71260375976544,
+        "elevation_std_m": 147.66141011836243,
+        "slope_mean_deg": 4.957497059147892,
+        "slope_p90_deg": 8.45422837718606,
+        "slope_std_deg": 2.512874994136959,
+        "laplacian_rms_m": 91.13878589134073,
+        "detrended_rms_m": 53.39324060546934
+      },
+      "pca_distance": 3.885375669757458,
+      "baseline_distance": 3.975082227464593,
+      "latitude": -16.81613602235619,
+      "longitude": -71.66545560984721
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 544.0245422363278,
+        "elevation_std_m": 175.57925074764015,
+        "slope_mean_deg": 4.11958639367228,
+        "slope_p90_deg": 8.479855192235192,
+        "slope_std_deg": 3.2499662950421215,
+        "laplacian_rms_m": 51.94334116040594,
+        "detrended_rms_m": 75.98107122757996
+      },
+      "pca_distance": 3.9948529400949107,
+      "baseline_distance": 4.051910203481747,
+      "latitude": -23.873644958953708,
+      "longitude": -69.45817800431217
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 2,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 542.3215240478514,
+        "elevation_std_m": 167.54314391715639,
+        "slope_mean_deg": 4.532800081443315,
+        "slope_p90_deg": 8.827068176226488,
+        "slope_std_deg": 3.02659503368603,
+        "laplacian_rms_m": 48.87722905582335,
+        "detrended_rms_m": 83.84185247114443
+      },
+      "pca_distance": 4.033915645152909,
+      "baseline_distance": 4.067699441456715,
+      "latitude": -23.87408589340428,
+      "longitude": -69.65454277983774
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 443.4753723144528,
+        "elevation_std_m": 137.96277525173883,
+        "slope_mean_deg": 4.243791823606114,
+        "slope_p90_deg": 8.160822516748782,
+        "slope_std_deg": 2.763165299754154,
+        "laplacian_rms_m": 46.78453222257238,
+        "detrended_rms_m": 134.82004720605008
+      },
+      "pca_distance": 3.9267080122305664,
+      "baseline_distance": 4.088508000241035,
+      "latitude": -23.783608879287065,
+      "longitude": -69.55659881430216
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 317.7428222656248,
+        "elevation_std_m": 93.83052380457313,
+        "slope_mean_deg": 5.704313731951092,
+        "slope_p90_deg": 9.942506846029708,
+        "slope_std_deg": 3.2534576555259114,
+        "laplacian_rms_m": 102.6333193911381,
+        "detrended_rms_m": 82.85837672077638
+      },
+      "pca_distance": 4.089211527020938,
+      "baseline_distance": 4.16138085648324,
+      "latitude": -16.544924491625704,
+      "longitude": -71.57209871716077
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 529.9214233398435,
+        "elevation_std_m": 174.54623320328562,
+        "slope_mean_deg": 4.795915485726102,
+        "slope_p90_deg": 9.78452057397654,
+        "slope_std_deg": 3.1609213888341268,
+        "laplacian_rms_m": 79.58189992709018,
+        "detrended_rms_m": 58.753092358429974
+      },
+      "pca_distance": 4.22227159949398,
+      "baseline_distance": 4.283864164383098,
+      "latitude": -16.45439372826702,
+      "longitude": -71.47860857088601
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 410.1575012207027,
+        "elevation_std_m": 127.6131573714459,
+        "slope_mean_deg": 5.677777023401876,
+        "slope_p90_deg": 8.9511726495551,
+        "slope_std_deg": 2.5554716664770805,
+        "laplacian_rms_m": 116.38264443458127,
+        "detrended_rms_m": 74.3006154319458
+      },
+      "pca_distance": 4.1815810012589765,
+      "baseline_distance": 4.327445426658744,
+      "latitude": -16.45468708656808,
+      "longitude": -71.6658934157224
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 544.1337036132812,
+        "elevation_std_m": 164.9351907521043,
+        "slope_mean_deg": 5.084906652584385,
+        "slope_p90_deg": 9.399926329125242,
+        "slope_std_deg": 2.937025321990086,
+        "laplacian_rms_m": 91.67196458488984,
+        "detrended_rms_m": 62.96526442897368
+      },
+      "pca_distance": 4.303214051118741,
+      "baseline_distance": 4.366618063454338,
+      "latitude": -16.545134501813994,
+      "longitude": -71.75947077748864
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 490.54157714843745,
+        "elevation_std_m": 147.12456641934136,
+        "slope_mean_deg": 4.6918069980601995,
+        "slope_p90_deg": 10.393880492748382,
+        "slope_std_deg": 3.7580655872772146,
+        "laplacian_rms_m": 76.2365905660468,
+        "detrended_rms_m": 100.87919541294906
+      },
+      "pca_distance": 4.4336899433118235,
+      "baseline_distance": 4.446492081136417,
+      "latitude": -16.544756484258432,
+      "longitude": -71.47841287945374
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 6,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 520.6188598632804,
+        "elevation_std_m": 165.25091815565293,
+        "slope_mean_deg": 5.408051950970583,
+        "slope_p90_deg": 10.015944139467969,
+        "slope_std_deg": 3.221396766972022,
+        "laplacian_rms_m": 70.26966964946936,
+        "detrended_rms_m": 112.61255401402268
+      },
+      "pca_distance": 4.5961263570455095,
+      "baseline_distance": 4.610900984367963,
+      "latitude": -24.23503845485784,
+      "longitude": -69.55539686617578
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 506.8519195556638,
+        "elevation_std_m": 167.5069089239764,
+        "slope_mean_deg": 5.591417981236955,
+        "slope_p90_deg": 10.395205766101098,
+        "slope_std_deg": 3.5283890670145888,
+        "laplacian_rms_m": 111.90019377942161,
+        "detrended_rms_m": 85.17653711641968
+      },
+      "pca_distance": 4.829175330429597,
+      "baseline_distance": 4.884438638187645,
+      "latitude": -16.906496281930565,
+      "longitude": -71.66534493357814
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 480.35476684570307,
+        "elevation_std_m": 145.19489202543284,
+        "slope_mean_deg": 5.5044382184730285,
+        "slope_p90_deg": 11.902530400509335,
+        "slope_std_deg": 3.955821998176546,
+        "laplacian_rms_m": 128.36546413552838,
+        "detrended_rms_m": 88.09211124572704
+      },
+      "pca_distance": 5.039590553169168,
+      "baseline_distance": 5.120387804933094,
+      "latitude": -16.364406527288946,
+      "longitude": -71.75960094913005
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 741.2972900390621,
+        "elevation_std_m": 220.17857058345825,
+        "slope_mean_deg": 5.141329349397,
+        "slope_p90_deg": 9.172028712439172,
+        "slope_std_deg": 3.601764734387838,
+        "laplacian_rms_m": 68.99010708801876,
+        "detrended_rms_m": 90.0915373699705
+      },
+      "pca_distance": 5.095756220201099,
+      "baseline_distance": 5.162875363492004,
+      "latitude": -16.273957932977247,
+      "longitude": -71.66610939624933
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 468.7092407226556,
+        "elevation_std_m": 144.8231957810566,
+        "slope_mean_deg": 6.876725699469247,
+        "slope_p90_deg": 10.565242007541691,
+        "slope_std_deg": 2.8571271128524143,
+        "laplacian_rms_m": 114.22786180810013,
+        "detrended_rms_m": 127.6749206075239
+      },
+      "pca_distance": 5.081641381419646,
+      "baseline_distance": 5.181650357605281,
+      "latitude": -16.63511845696477,
+      "longitude": -71.47821631059338
+    },
+    {
+      "region_id": "la-joya",
+      "row": 5,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -5000.0,
+      "features": {
+        "relief_p95_p05_m": 653.3964355468747,
+        "elevation_std_m": 206.9460323336973,
+        "slope_mean_deg": 6.3702136193774725,
+        "slope_p90_deg": 11.181310455529916,
+        "slope_std_deg": 3.2342171177652026,
+        "laplacian_rms_m": 89.74433987181807,
+        "detrended_rms_m": 81.29516012057485
+      },
+      "pca_distance": 5.203486536281987,
+      "baseline_distance": 5.2310888455124935,
+      "latitude": -16.54505049760812,
+      "longitude": -71.6657846966777
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 441.38505859375005,
+        "elevation_std_m": 141.62498974757082,
+        "slope_mean_deg": 5.064701950188563,
+        "slope_p90_deg": 13.422381099672371,
+        "slope_std_deg": 5.219124500853463,
+        "laplacian_rms_m": 107.67189611727332,
+        "detrended_rms_m": 105.00585985120156
+      },
+      "pca_distance": 5.25394039243723,
+      "baseline_distance": 5.270069965890924,
+      "latitude": -16.454561361321655,
+      "longitude": -71.57225092287395
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -45000.0,
+      "features": {
+        "relief_p95_p05_m": 560.027780151367,
+        "elevation_std_m": 165.67432898261526,
+        "slope_mean_deg": 6.155965697784731,
+        "slope_p90_deg": 11.962962991496603,
+        "slope_std_deg": 3.816513759498625,
+        "laplacian_rms_m": 119.00541812859673,
+        "detrended_rms_m": 88.87785014908674
+      },
+      "pca_distance": 5.23606878800688,
+      "baseline_distance": 5.2906005217240795,
+      "latitude": -16.906199637628404,
+      "longitude": -71.47762131741125
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 572.9538452148435,
+        "elevation_std_m": 171.82522108476053,
+        "slope_mean_deg": 6.265250369576582,
+        "slope_p90_deg": 13.126174639440435,
+        "slope_std_deg": 4.49230713648173,
+        "laplacian_rms_m": 108.60987500204544,
+        "detrended_rms_m": 103.0404978092757
+      },
+      "pca_distance": 5.529657381936593,
+      "baseline_distance": 5.5433051096043044,
+      "latitude": -16.274041376620723,
+      "longitude": -71.75966559804134
+    },
+    {
+      "region_id": "la-joya",
+      "row": 4,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 5000.0,
+      "features": {
+        "relief_p95_p05_m": 577.230004882812,
+        "elevation_std_m": 185.63745973407296,
+        "slope_mean_deg": 7.085169998391584,
+        "slope_p90_deg": 12.485047444239628,
+        "slope_std_deg": 3.731156535956091,
+        "laplacian_rms_m": 112.4145554688205,
+        "detrended_rms_m": 96.51558296011794
+      },
+      "pca_distance": 5.520697500030451,
+      "baseline_distance": 5.552726904089398,
+      "latitude": -16.45477090361591,
+      "longitude": -71.75953600918673
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 663.1983581542968,
+        "elevation_std_m": 198.7982572651153,
+        "slope_mean_deg": 6.316611080052889,
+        "slope_p90_deg": 13.242046649317647,
+        "slope_std_deg": 4.21897749527743,
+        "laplacian_rms_m": 106.91904625961739,
+        "detrended_rms_m": 87.46774519588345
+      },
+      "pca_distance": 5.632450960977027,
+      "baseline_distance": 5.677844096983894,
+      "latitude": -16.725774969271455,
+      "longitude": -71.6655657949642
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -35000.0,
+      "features": {
+        "relief_p95_p05_m": 665.0076782226562,
+        "elevation_std_m": 203.94937608156118,
+        "slope_mean_deg": 7.491080581135934,
+        "slope_p90_deg": 12.555920340604619,
+        "slope_std_deg": 3.69197533978472,
+        "laplacian_rms_m": 123.82350136524772,
+        "detrended_rms_m": 93.68749630690364
+      },
+      "pca_distance": 5.887403025071376,
+      "baseline_distance": 5.946901384219909,
+      "latitude": -16.815840037416304,
+      "longitude": -71.4778205317896
+    },
+    {
+      "region_id": "la-joya",
+      "row": 3,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 15000.0,
+      "features": {
+        "relief_p95_p05_m": 1004.0413208007806,
+        "elevation_std_m": 301.2746999276008,
+        "slope_mean_deg": 6.195507318457966,
+        "slope_p90_deg": 9.265300037020138,
+        "slope_std_deg": 2.4926743904171085,
+        "laplacian_rms_m": 61.53490363667979,
+        "detrended_rms_m": 74.15687144833474
+      },
+      "pca_distance": 6.131492975713224,
+      "baseline_distance": 6.222741395046459,
+      "latitude": -16.36403019277695,
+      "longitude": -71.47880338707233
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 653.184814453125,
+        "elevation_std_m": 198.8798973896955,
+        "slope_mean_deg": 8.708567664326564,
+        "slope_p90_deg": 14.365030853715973,
+        "slope_std_deg": 4.112147573593864,
+        "laplacian_rms_m": 144.79037230379637,
+        "detrended_rms_m": 109.43622722071885
+      },
+      "pca_distance": 6.509812534375305,
+      "baseline_distance": 6.594577568306929,
+      "latitude": -16.183675455406718,
+      "longitude": -71.75972995663868
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 563.3536621093748,
+        "elevation_std_m": 170.46725714602937,
+        "slope_mean_deg": 8.340703351029882,
+        "slope_p90_deg": 15.695359312291803,
+        "slope_std_deg": 4.793201488872238,
+        "laplacian_rms_m": 139.99486682855354,
+        "detrended_rms_m": 133.70450583759003
+      },
+      "pca_distance": 6.570685989504469,
+      "baseline_distance": 6.6080947647064345,
+      "latitude": -16.09322569600529,
+      "longitude": -71.66632344135111
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 858.2412353515624,
+        "elevation_std_m": 259.15638117862767,
+        "slope_mean_deg": 5.358292589229053,
+        "slope_p90_deg": 13.074495988983603,
+        "slope_std_deg": 4.802765550804026,
+        "laplacian_rms_m": 59.73873429609042,
+        "detrended_rms_m": 164.5461401257655
+      },
+      "pca_distance": 6.426720118832076,
+      "baseline_distance": 6.626119278199083,
+      "latitude": -16.092934947296495,
+      "longitude": -71.47938260576643
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 737.5689086914061,
+        "elevation_std_m": 225.28341664213704,
+        "slope_mean_deg": 8.695888389287898,
+        "slope_p90_deg": 14.16620928018675,
+        "slope_std_deg": 3.959497172330851,
+        "laplacian_rms_m": 149.49436451884696,
+        "detrended_rms_m": 113.37211134294166
+      },
+      "pca_distance": 6.802958880733512,
+      "baseline_distance": 6.886014937844566,
+      "latitude": -16.635286839256448,
+      "longitude": -71.57194582899719
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 6,
+      "center_east_m": 15000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 759.5242065429686,
+        "elevation_std_m": 228.9381708231232,
+        "slope_mean_deg": 9.000205075840805,
+        "slope_p90_deg": 14.357241069215979,
+        "slope_std_deg": 3.9191012508139584,
+        "laplacian_rms_m": 130.50898167685972,
+        "detrended_rms_m": 133.24435655327545
+      },
+      "pca_distance": 6.906879783492419,
+      "baseline_distance": 6.936197145059415,
+      "latitude": -16.09330876745023,
+      "longitude": -71.75979402563551
+    },
+    {
+      "region_id": "la-joya",
+      "row": 6,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": -15000.0,
+      "features": {
+        "relief_p95_p05_m": 746.7583129882805,
+        "elevation_std_m": 219.811742446559,
+        "slope_mean_deg": 8.703071291418475,
+        "slope_p90_deg": 14.160761982503852,
+        "slope_std_deg": 3.6711527783156845,
+        "laplacian_rms_m": 159.1200398177686,
+        "detrended_rms_m": 125.34227682487118
+      },
+      "pca_distance": 6.908315417962459,
+      "baseline_distance": 7.015229036736303,
+      "latitude": -16.635413126433665,
+      "longitude": -71.66567549016501
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 851.676647949218,
+        "elevation_std_m": 250.87773167804804,
+        "slope_mean_deg": 7.753909678311458,
+        "slope_p90_deg": 14.279278274767135,
+        "slope_std_deg": 4.354010125817252,
+        "laplacian_rms_m": 112.87212411077552,
+        "detrended_rms_m": 150.8884924794681
+      },
+      "pca_distance": 7.048218454919247,
+      "baseline_distance": 7.058878666392018,
+      "latitude": -16.1835921980125,
+      "longitude": -71.66621666013285
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 651.9671508789058,
+        "elevation_std_m": 199.18562535308524,
+        "slope_mean_deg": 10.571864236128654,
+        "slope_p90_deg": 17.46558951989256,
+        "slope_std_deg": 5.104247411887739,
+        "laplacian_rms_m": 182.44663046776387,
+        "detrended_rms_m": 136.9680736258013
+      },
+      "pca_distance": 7.729888353595992,
+      "baseline_distance": 7.866833574537251,
+      "latitude": -16.725479642607578,
+      "longitude": -71.4780188621088
+    },
+    {
+      "region_id": "atacama-control",
+      "row": 1,
+      "col": 7,
+      "center_east_m": 25000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 971.9518249511718,
+        "elevation_std_m": 285.1267771012513,
+        "slope_mean_deg": 9.107079967382397,
+        "slope_p90_deg": 16.53862320668223,
+        "slope_std_deg": 5.223591931149016,
+        "laplacian_rms_m": 101.79249460569875,
+        "detrended_rms_m": 160.74288879196507
+      },
+      "pca_distance": 7.91816382908472,
+      "baseline_distance": 7.943107803841652,
+      "latitude": -23.783797500288266,
+      "longitude": -69.65471320188394
+    },
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": -25000.0,
+      "features": {
+        "relief_p95_p05_m": 1091.9792358398436,
+        "elevation_std_m": 333.77141808011487,
+        "slope_mean_deg": 10.635473550275215,
+        "slope_p90_deg": 16.3886017257661,
+        "slope_std_deg": 4.2609889488348,
+        "laplacian_rms_m": 162.98730898642856,
+        "detrended_rms_m": 113.07850901877421
+      },
+      "pca_distance": 8.627235590762611,
+      "baseline_distance": 8.733208908689697,
+      "latitude": -16.725648400438367,
+      "longitude": -71.57179225667501
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 1361.9493530273437,
+        "elevation_std_m": 417.4887452065533,
+        "slope_mean_deg": 11.588903893131135,
+        "slope_p90_deg": 18.46187176440637,
+        "slope_std_deg": 5.071702838875493,
+        "laplacian_rms_m": 134.7177873663098,
+        "detrended_rms_m": 177.13622920672302
+      },
+      "pca_distance": 10.279324945840113,
+      "baseline_distance": 10.293783297325165,
+      "latitude": -16.273832767835223,
+      "longitude": -71.57255329372705
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 1387.523217773436,
+        "elevation_std_m": 437.4030310343366,
+        "slope_mean_deg": 11.553629411060689,
+        "slope_p90_deg": 21.582793495445383,
+        "slope_std_deg": 6.515965905129895,
+        "laplacian_rms_m": 142.7043626843124,
+        "detrended_rms_m": 192.46691902345844
+      },
+      "pca_distance": 10.953769579774363,
+      "baseline_distance": 10.994985404374846,
+      "latitude": -16.183300798485693,
+      "longitude": -71.47919040236535
+    },
+    {
+      "region_id": "la-joya",
+      "row": 0,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 45000.0,
+      "features": {
+        "relief_p95_p05_m": 1699.0181762695306,
+        "elevation_std_m": 501.37128578733734,
+        "slope_mean_deg": 10.872728065875524,
+        "slope_p90_deg": 19.21354428628257,
+        "slope_std_deg": 6.0894384656302325,
+        "laplacian_rms_m": 100.80779171253491,
+        "detrended_rms_m": 262.21681644886473
+      },
+      "pca_distance": 11.885289882790769,
+      "baseline_distance": 12.08594102650719,
+      "latitude": -16.09310108915895,
+      "longitude": -71.57285295500371
+    },
+    {
+      "region_id": "la-joya",
+      "row": 1,
+      "col": 8,
+      "center_east_m": 35000.0,
+      "center_north_m": 35000.0,
+      "features": {
+        "relief_p95_p05_m": 1787.9848022460928,
+        "elevation_std_m": 575.9286758626647,
+        "slope_mean_deg": 16.225010694692887,
+        "slope_p90_deg": 26.32697797410173,
+        "slope_std_deg": 6.521735111428097,
+        "laplacian_rms_m": 144.08229213836773,
+        "detrended_rms_m": 271.4740807103686
+      },
+      "pca_distance": 14.148995188102472,
+      "baseline_distance": 14.192983819626564,
+      "latitude": -16.18346731224331,
+      "longitude": -71.57270346222876
+    },
+    {
+      "region_id": "la-joya",
+      "row": 2,
+      "col": 9,
+      "center_east_m": 45000.0,
+      "center_north_m": 25000.0,
+      "features": {
+        "relief_p95_p05_m": 1582.5672729492185,
+        "elevation_std_m": 504.18972306612943,
+        "slope_mean_deg": 15.812895801755975,
+        "slope_p90_deg": 26.132989246312754,
+        "slope_std_deg": 7.172215478236536,
+        "laplacian_rms_m": 177.106505572036,
+        "detrended_rms_m": 361.0224019377148
+      },
+      "pca_distance": 14.170201701925325,
+      "baseline_distance": 14.312746812234519,
+      "latitude": -16.27366588158247,
+      "longitude": -71.47899733018073
+    }
+  ],
+  "excluded_windows": [
+    {
+      "region_id": "la-joya",
+      "row": 7,
+      "col": 0,
+      "reason": "Contains elevation <= 0 m; conservative ocean/coast exclusion, not a land mask"
+    },
+    {
+      "region_id": "la-joya",
+      "row": 8,
+      "col": 0,
+      "reason": "Contains elevation <= 0 m; conservative ocean/coast exclusion, not a land mask"
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 0,
+      "reason": "Contains elevation <= 0 m; conservative ocean/coast exclusion, not a land mask"
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 1,
+      "reason": "Contains elevation <= 0 m; conservative ocean/coast exclusion, not a land mask"
+    },
+    {
+      "region_id": "la-joya",
+      "row": 9,
+      "col": 2,
+      "reason": "Contains elevation <= 0 m; conservative ocean/coast exclusion, not a land mask"
+    }
+  ],
+  "model": {
+    "feature_names": [
+      "relief_p95_p05_m",
+      "elevation_std_m",
+      "slope_mean_deg",
+      "slope_p90_deg",
+      "slope_std_deg",
+      "laplacian_rms_m",
+      "detrended_rms_m"
+    ],
+    "mean": [
+      440.4955041343287,
+      137.02285210429466,
+      4.48703157851109,
+      8.601786456053908,
+      2.893450296187125,
+      68.76358547530825,
+      78.52660765770466
+    ],
+    "scale": [
+      246.74069436659522,
+      77.81179619299718,
+      2.6869732081701296,
+      5.527903761919964,
+      1.9248532248878147,
+      44.51094713553441,
+      50.738382313250035
+    ],
+    "components": [
+      [
+        -0.367027828951225,
+        -0.36831580050701007,
+        -0.39616556127088964,
+        -0.3938217921738791,
+        -0.35820438596684434,
+        -0.37803874473533755,
+        -0.38258020505137375
+      ],
+      [
+        -0.5207562258751434,
+        -0.5119218949089301,
+        -0.14228185642291985,
+        0.26056518038531534,
+        0.5426357002980137,
+        0.2753152217743028,
+        0.09142544640412563
+      ]
+    ]
+  },
+  "notice": "Menor distancia indica parecido en siete descriptores a esta escala. No es porcentaje, probabilidad, equivalencia geológica ni aptitud para una base."
+}

@@ -1,0 +1,59 @@
+{
+  "region": {
+    "id": "atacama-control",
+    "name": "Regi\u00f3n de Atacama",
+    "body": "Earth",
+    "latitude": -24.1,
+    "longitude": -69.9
+  },
+  "retrieved_at": "2026-10-23T00:28:31.474650+00:00",
+  "sources": [
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S25/S25W071.hgt.gz",
+      "sha256": "8f236f517456b06f1794c15fc658cfb94d83109ccb3baef091bdf6b1175a24cd",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    },
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S25/S25W070.hgt.gz",
+      "sha256": "95e0c4fd70dc4cdcb038a95faf81602c667c50d475125d0223e2fa30268c672c",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    },
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S24/S24W071.hgt.gz",
+      "sha256": "ad83ffc6b7400d69fd126d0508a7751151241f8dd4707ef7c834d70446560a10",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    },
+    {
+      "url": "https://elevation-tiles-prod.s3.amazonaws.com/skadi/S24/S24W070.hgt.gz",
+      "sha256": "c1b61f1b0628199925c6c1fc7effe7b4d6a4df4c28e616203d25769f6f9ae968",
+      "product": "Mapzen Skadi (global source mosaic)",
+      "vertical_datum": "WGS84/EGM96 geoid"
+    }
+  ],
+  "source_crs": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+  "native_resolution": [
+    0.0002777777777777778,
+    0.0002777777777777778
+  ],
+  "native_resolution_unit": "degree",
+  "target_crs": "+proj=aeqd +lat_0=-24.1 +lon_0=-69.9 +datum=WGS84 +units=m +no_defs",
+  "transform": [
+    500.0,
+    0.0,
+    -50000.0,
+    0.0,
+    -500.0,
+    50000.0
+  ],
+  "cell_m": 500,
+  "shape": [
+    200,
+    200
+  ],
+  "resampling": "GDAL average",
+  "missing_fraction": 0.0,
+  "sha256": "fcc8dde363b6354d8e1ec9fc0e14cab2d4a960b90ea4f606c087ea15803da15d"
+}

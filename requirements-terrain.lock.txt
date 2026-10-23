@@ -1,0 +1,8 @@
+-r requirements.lock.txt
+numpy==2.4.6
+rasterio==1.4.4
+affine==3.0.1
+attrs==26.1.0
+cligj==0.7.2
+click-plugins==1.1.1.2
+pyparsing==3.3.3
