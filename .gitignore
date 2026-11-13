@@ -22,3 +22,7 @@ artifacts/
 data/terrain/*.hgt.gz
 data/terrain/*.hgt.gz.properties
 
+
+# Local network captures
+*.pcap
+*.pcapng

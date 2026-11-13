@@ -24,9 +24,9 @@ La consulta real de NASA POWER del 1 al 7 de enero de 2024 para Atacama central 
 
 Ejecutar `python scripts/audit_secrets.py` antes de preparar una subida. La revisión utiliza las reglas reales de Git y busca coincidencias con credenciales locales, tokens reconocibles, JWT, claves privadas y asignaciones de credenciales en los archivos candidatos. Solo informa rutas y categorías, nunca valores. El informe local queda en `artifacts/secret-audit.json`, excluido de Git.
 
-En esta revisión la carpeta **todavía no era un repositorio Git**: no había índice ni historial local, y por tanto `.env` no podía estar registrado. Se comprobaron 53 archivos candidatos mediante un repositorio temporal, sin inicializar esta carpeta, sin detectar secretos. La plantilla contenía únicamente valores vacíos y `.env` estaba excluido. No se publicó nada. La revisión debe repetirse si cambian archivos; no garantiza que futuros cambios estén libres de secretos.
+En una revisión histórica, anterior a la creación del repositorio, la carpeta **todavía no era un repositorio Git**: no había índice ni historial local, y por tanto `.env` no podía estar registrado. Se comprobaron 53 archivos candidatos mediante un repositorio temporal, sin inicializar esta carpeta, sin detectar secretos. La plantilla contenía únicamente valores vacíos y `.env` estaba excluido. No se publicó nada. La revisión debe repetirse si cambian archivos; no garantiza que futuros cambios estén libres de secretos.
 
-Cuando exista un repositorio, el script comprueba archivos seguidos y commits disponibles mediante referencias y reflog. Si `.env` estuviera registrado, retirarlo con `git rm --cached -- .env` conserva el archivo local; debe verificarse de nuevo el índice. Si una clave aparece en commits anteriores, quitarla del último archivo no la elimina del historial: se debe revocar o rotar y sanear el historial antes de publicar. No hay un historial local previo que revisar en el estado actual.
+Cuando exista un repositorio, el script comprueba archivos seguidos y commits disponibles mediante referencias y reflog. Si `.env` estuviera registrado, retirarlo con `git rm --cached -- .env` conserva el archivo local; debe verificarse de nuevo el índice. Si una clave aparece en commits anteriores, quitarla del último archivo no la elimina del historial: se debe revocar o rotar y sanear el historial antes de publicar. Actualmente existe historial Git; el escáner lo revisa junto con el árbol de trabajo.
 
 ### Interrupciones de Wokwi y antigüedad de las mediciones
 
@@ -202,3 +202,14 @@ La comprobación de navegador incluye además el botón ×1, selección desde el
 - [Leaflet](https://leafletjs.com/reference.html), [Natural Earth](https://www.naturalearthdata.com/about/terms-of-use/).
 - [Wokwi ESP32 WiFi](https://docs.wokwi.com/guides/esp32-wifi).
 - [Supabase REST API](https://supabase.com/docs/guides/api), [Render FastAPI](https://render.com/docs/deploy-fastapi).
+
+
+## Mejoras posteriores a la auditoría
+
+Selector Español / English en ambas páginas, con preferencia local y conservación del candidato al cambiar. Las rutas `/?lang=en` y `/catalogue?lang=en` permiten compartir la versión inglesa. Para mantener los textos, editar `static/translations.en.json` y ejecutar `python scripts/build_english.py`; los archivos en `static/en/` se generan a partir de la interfaz compartida. Los datos científicos originales y los nombres de campos de la API se conservan.
+
+Se reparó el certificado GTS Root R4 desde la fuente oficial y se validó como X.509. Falta verificar el sketch en la simulación y la cadena TLS efectiva del despliegue. Los tokens no ASCII se rechazan sin error interno. Las consultas climáticas cacheadas responden sin esperar a la red; si otra consulta está ocupada se devuelve 429 con Retry-After.
+
+Para optimizar telemetría, aplicar de nuevo `supabase/schema.sql` en el editor SQL de Supabase: añade un índice y una función de solo lectura restringida a service_role que obtiene la última recepción de cada estación. Hasta aplicarlo, el servidor mantiene compatibilidad con un máximo de diez páginas; si se supera devuelve un error explícito en lugar de omitir estaciones silenciosamente. No se ejecutó esta migración sobre la base remota.
+
+La integración continua verifica traducciones generadas, pruebas Python, datos y secretos. Para herramientas auxiliares: instalar `requirements-dev.txt`. La validación de idioma en navegador está en `scripts/language_check.cjs`, junto con las pruebas visuales existentes. Las credenciales por dispositivo, retención de datos y cuotas globales siguen pendientes para una operación con múltiples dispositivos; no se cambiaron las credenciales actuales.

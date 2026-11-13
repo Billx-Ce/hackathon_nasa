@@ -24,8 +24,21 @@ VIEWER_DIR = ROOT / 'data' / 'viewer'
 
 def read_artifact(path):
     try:
-        return json.loads(path.read_text(encoding='utf-8'))
-    except (OSError, ValueError):
+        data = json.loads(path.read_text(encoding='utf-8'))
+        if not isinstance(data, dict):
+            raise ValueError('Invalid artifact object')
+        if path.name == 'catalogue.json':
+            candidates = data['candidates']
+            if not isinstance(candidates, list) or not candidates:
+                raise ValueError('Empty catalogue')
+            for candidate in candidates:
+                if not isinstance(candidate['id'], str) or not candidate['id'].replace('-', '').isalnum():
+                    raise ValueError('Invalid identifier')
+                for key in ('name', 'latitude', 'longitude'):
+                    if key not in candidate:
+                        raise ValueError('Incomplete candidate')
+        return data
+    except (OSError, ValueError, KeyError, TypeError):
         raise HTTPException(503, 'Datos de relieve no disponibles. Ejecuta prepare_viewer.py.')
 
 # Áreas propuestas para estudiar. No se presentan como análogos demostrados.
@@ -37,7 +50,7 @@ SITES = [
 try:
     SITES += [{k: candidate[k] for k in ('id', 'name', 'latitude', 'longitude')}
               for candidate in read_artifact(VIEWER_DIR / 'catalogue.json')['candidates']]
-except HTTPException:
+except (HTTPException, KeyError, TypeError):
     pass  # Legacy climate / IoT still works if the prepared viewer is absent.
 SITE_IDS = {s['id'] for s in SITES}
 cache = {}
@@ -54,20 +67,22 @@ def supabase_config():
 
 
 @app.get('/')
-def home():
-    return FileResponse(ROOT / 'static' / 'index.html', headers={'Cache-Control': 'no-store'})
+def home(lang: str = Query('es', pattern='^(es|en)$')):
+    return FileResponse(ROOT / 'static' / ('en' if lang == 'en' else '') / 'index.html', headers={'Cache-Control': 'no-store'})
 
 
 @app.get('/catalogue')
-def readable_catalogue():
-    return FileResponse(ROOT / 'static' / 'catalogue.html', headers={'Cache-Control': 'no-store'})
+def readable_catalogue(lang: str = Query('es', pattern='^(es|en)$')):
+    return FileResponse(ROOT / 'static' / ('en' if lang == 'en' else '') / 'catalogue.html', headers={'Cache-Control': 'no-store'})
 
 
 @app.middleware('http')
 async def fresh_application_state(request, call_next):
     response = await call_next(request)
-    if request.url.path.startswith('/api/') or request.url.path in {'/static/app.js', '/static/viewers.js', '/static/experience.js', '/static/telemetry.js', '/static/catalogue.js', '/static/style.css'}:
+    if request.url.path.startswith(('/api/', '/static/en/')) or request.url.path in {'/static/language.js', '/static/translate-data.js', '/static/translations.en.json', '/static/app.js', '/static/viewers.js', '/static/experience.js', '/static/telemetry.js', '/static/catalogue.js', '/static/style.css'}:
         response.headers['Cache-Control'] = 'no-store'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     return response
 
 
@@ -150,6 +165,10 @@ async def climate(site_id: str, start: str = Query('2024-01-01', pattern=r'^\d{4
     if start < date.fromisoformat(limits['min_date']) or end > date.fromisoformat(limits['max_date']) or (end - start).days >= limits['max_days']:
         raise HTTPException(422, f"Usa fechas entre {limits['min_date']} y {limits['max_date']}, con un máximo de 366 días inclusive. Verifica el año completo.")
     cache_key = (site_id, start.isoformat(), end.isoformat())
+    if cache_key in cache and time.monotonic() - cache[cache_key][0] < 86400:
+        return cache[cache_key][1]
+    if power_lock.locked():
+        raise HTTPException(429, 'Consulta clim?tica en curso. Intenta de nuevo en unos segundos.', headers={'Retry-After': '3'})
     async with power_lock:
         if cache_key in cache and time.monotonic() - cache[cache_key][0] < 86400:
             return cache[cache_key][1]
@@ -182,7 +201,7 @@ async def climate(site_id: str, start: str = Query('2024-01-01', pattern=r'^\d{4
 
 class Reading(BaseModel):
     station_id: str = Field(min_length=1, max_length=64, pattern=r'^[a-zA-Z0-9_-]+$')
-    site_id: str
+    site_id: str = Field(min_length=1, max_length=64, pattern=r'^[a-zA-Z0-9_-]+$')
     temperature_c: float = Field(ge=-40, le=80, allow_inf_nan=False)
     humidity_pct: float = Field(ge=0, le=100, allow_inf_nan=False)
 
@@ -192,7 +211,7 @@ async def receive(reading: Reading, x_device_token: str = Header(default='')):
     token = os.getenv('DEVICE_TOKEN', '')
     if not token:
         raise HTTPException(503, 'Configura DEVICE_TOKEN en el servidor antes de conectar Wokwi.')
-    if not secrets.compare_digest(token, x_device_token):
+    if not secrets.compare_digest(token.encode('utf-8'), x_device_token.encode('utf-8')):
         raise HTTPException(401, 'Token de dispositivo incorrecto.')
     if reading.site_id not in SITE_IDS:
         raise HTTPException(422, 'Sitio desconocido.')
@@ -221,17 +240,23 @@ async def telemetry(site_id: str = 'la-joya'):
         history = [r for r in demo_readings if r['site_id'] == site_id]
         return telemetry_result('temporary-memory', history[-100:], history)
     try:
-        async with httpx.AsyncClient(timeout=15) as client:
+        async with asyncio.timeout(25), httpx.AsyncClient(timeout=10) as client:
             response = await client.get(url + '/rest/v1/telemetry',
                 params={'site_id': f'eq.{site_id}', 'select': '*', 'order': 'received_at.desc', 'limit': 100},
                 headers={'apikey': key, 'Authorization': f'Bearer {key}'})
             response.raise_for_status()
             readings = list(reversed(response.json()))
-            # Scan lightweight metadata so a quiet station is not hidden by
-            # another station's 100 newest readings. No generated replacements.
+            summary = await client.post(url + '/rest/v1/rpc/telemetry_station_status',
+                json={'requested_site': site_id},
+                headers={'apikey': key, 'Authorization': f'Bearer {key}'})
+            if summary.status_code == 200:
+                return telemetry_result('supabase', readings, summary.json())
+            if summary.status_code not in (404, 400):
+                summary.raise_for_status()
+            # Bounded compatibility path until the SQL migration is applied.
             metadata = []
             offset = 0
-            while True:
+            for _ in range(10):
                 page = await client.get(url + '/rest/v1/telemetry',
                     params={'site_id': f'eq.{site_id}', 'select': 'station_id,received_at',
                             'order': 'received_at.desc,id.desc', 'offset': offset, 'limit': 1000},
@@ -242,8 +267,10 @@ async def telemetry(site_id: str = 'la-joya'):
                 if len(batch) < 1000:
                     break
                 offset += len(batch)
+            else:
+                raise HTTPException(503, 'El historial supera el l?mite de consulta. Aplica supabase/schema.sql para habilitar el resumen de estaciones.')
         return telemetry_result('supabase', readings, metadata)
-    except (httpx.HTTPError, ValueError, TypeError, KeyError):
+    except (httpx.HTTPError, TimeoutError, ValueError, TypeError, KeyError):
         raise HTTPException(502, 'No se pudo consultar Supabase.')
 
 

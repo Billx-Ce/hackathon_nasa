@@ -14,3 +14,17 @@ alter table public.telemetry enable row level security;
 revoke all on public.telemetry from anon, authenticated;
 grant select, insert on public.telemetry to service_role;
 grant usage, select on sequence public.telemetry_id_seq to service_role;
+
+-- Latest receipt per station, without transferring the complete history.
+create index if not exists telemetry_station_latest
+  on public.telemetry(site_id, station_id, received_at desc);
+create or replace function public.telemetry_station_status(requested_site text)
+returns table(station_id text, received_at timestamptz)
+language sql stable security invoker set search_path = public
+as $$
+  select distinct on (t.station_id) t.station_id, t.received_at
+  from public.telemetry t where t.site_id = requested_site
+  order by t.station_id, t.received_at desc;
+$$;
+revoke all on function public.telemetry_station_status(text) from public, anon, authenticated;
+grant execute on function public.telemetry_station_status(text) to service_role;

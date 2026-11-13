@@ -91,7 +91,9 @@ def prepare():
 
 def write(name, payload):
     target = OUT / (name + '.json')
-    target.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':'), allow_nan=False), encoding='utf-8')
+    temporary = target.with_suffix('.tmp')
+    temporary.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':'), allow_nan=False), encoding='utf-8')
+    temporary.replace(target)
 
 
 if __name__ == '__main__':

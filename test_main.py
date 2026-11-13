@@ -30,6 +30,48 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(len(self.client.get('/api/telemetry').json()['readings']), 1)
         self.assertEqual(len(self.client.get('/api/telemetry?site_id=atacama-control').json()['readings']), 0)
 
+    def test_unicode_token_rejected_without_server_error(self):
+        payload = dict(station_id='a', site_id='la-joya', temperature_c=20, humidity_pct=30)
+        result = self.client.post('/api/telemetry', json=payload, headers={'X-Device-Token': b'\xff'})
+        self.assertEqual(result.status_code, 401)
+
+    def test_bilingual_pages_and_language_validation(self):
+        for path in ['/', '/catalogue']:
+            self.assertIn('lang="en"', self.client.get(path, params={'lang': 'en'}).text)
+            self.assertIn('lang="es"', self.client.get(path, params={'lang': 'es'}).text)
+            self.assertEqual(self.client.get(path, params={'lang': 'invalid'}).status_code, 422)
+
+    def test_invalid_catalogue_structure_returns_503(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'catalogue.json'
+            path.write_text('{"candidates": [{}]}', encoding='utf-8')
+            with patch.object(main, 'VIEWER_DIR', Path(directory)):
+                self.assertEqual(self.client.get('/api/terrains').status_code, 503)
+
+    def test_station_summary_does_not_scan_history(self):
+        fake = AsyncMock()
+        fake.__aenter__.return_value = fake
+        req = httpx.Request('GET', 'https://example.supabase.co/rest/v1/telemetry')
+        fake.get.return_value = httpx.Response(200, json=[], request=req)
+        fake.post.return_value = httpx.Response(200, json=[dict(station_id='quiet', received_at='2024-01-01T00:00:00Z')], request=req)
+        with patch.dict(os.environ, {'SUPABASE_URL': 'https://example.supabase.co', 'SUPABASE_SERVICE_ROLE_KEY': 'test'}), patch.object(main.httpx, 'AsyncClient', return_value=fake):
+            response = self.client.get('/api/telemetry')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['stations'][0]['station_id'], 'quiet')
+        self.assertEqual(fake.get.await_count, 1)
+        self.assertTrue(fake.post.call_args.args[0].endswith('/rpc/telemetry_station_status'))
+
+    def test_climate_cache_available_while_upstream_busy(self):
+        import asyncio
+        async def check():
+            main.cache[('la-joya', '2024-01-01', '2024-01-07')] = (main.time.monotonic(), {'cached': True})
+            async with main.power_lock:
+                self.assertEqual(await main.climate('la-joya', '2024-01-01', '2024-01-07'), {'cached': True})
+                with self.assertRaises(main.HTTPException) as error:
+                    await main.climate('la-joya', '2024-01-02', '2024-01-07')
+                self.assertEqual(error.exception.status_code, 429)
+        asyncio.run(check())
+
     def test_invalid_sensor_reading_rejected(self):
         payload = dict(station_id='wokwi-01', site_id='la-joya', temperature_c=24, humidity_pct=120)
         self.assertEqual(self.client.post('/api/telemetry', json=payload, headers={'X-Device-Token': 'test-device-token'}).status_code, 422)
@@ -81,6 +123,7 @@ class IntegrationTests(unittest.TestCase):
             return httpx.Response(200, json=rows, request=httpx.Request('GET', 'https://example.supabase.co/rest/v1/telemetry'))
         latest = dict(station_id='active', received_at='2024-01-01T00:00:00Z')
         old = dict(station_id='quiet', received_at='2023-01-01T00:00:00Z')
+        fake.post.return_value = httpx.Response(404, request=httpx.Request('POST', 'https://example.supabase.co/rest/v1/rpc/telemetry_station_status'))
         fake.get.side_effect = [response([latest]), response([latest]*1000), response([old])]
         with patch.dict(os.environ, {'SUPABASE_URL': 'https://example.supabase.co', 'SUPABASE_SERVICE_ROLE_KEY': 'test'}), patch.object(main.httpx, 'AsyncClient', return_value=fake):
             result = self.client.get('/api/telemetry').json()
@@ -171,6 +214,7 @@ class IntegrationTests(unittest.TestCase):
             self.assertTrue(fake.post.call_args.kwargs['json']['simulated'])
             self.assertEqual(fake.post.call_args.kwargs['headers']['apikey'], 'server-only-test-key')
             self.assertEqual(main.demo_readings, [])
+            fake.post.return_value = httpx.Response(200, json=[], request=httpx.Request('POST', 'https://example.supabase.co/rest/v1/rpc/telemetry_station_status'))
             history = self.client.get('/api/telemetry?site_id=atacama-central')
             self.assertEqual(history.json()['readings'], [])
             self.assertEqual(fake.get.call_args.kwargs['params']['site_id'], 'eq.atacama-central')
