@@ -79,7 +79,7 @@ def readable_catalogue(lang: str = Query('es', pattern='^(es|en)$')):
 @app.middleware('http')
 async def fresh_application_state(request, call_next):
     response = await call_next(request)
-    if request.url.path.startswith(('/api/', '/static/en/')) or request.url.path in {'/static/language.js', '/static/translate-data.js', '/static/translations.en.json', '/static/app.js', '/static/viewers.js', '/static/experience.js', '/static/telemetry.js', '/static/catalogue.js', '/static/style.css'}:
+    if request.url.path.startswith(('/api/', '/static/en/')) or request.url.path in {'/static/profile.js', '/static/language.js', '/static/translate-data.js', '/static/translations.en.json', '/static/app.js', '/static/viewers.js', '/static/experience.js', '/static/telemetry.js', '/static/catalogue.js', '/static/style.css'}:
         response.headers['Cache-Control'] = 'no-store'
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'

@@ -321,5 +321,17 @@
   ". Aproximadamente 463 m por píxel en el ecuador, altura en metros respecto al areoide marciano. Permite estudiar relieve regional; no obstáculos pequeños o rutas seguras de rover.": ". Approximately 463 m per pixel at the equator, with elevation in meters relative to the Martian areoid. Supports regional terrain studies, not small obstacles or safe rover routes.",
   ": mosaico global, alturas en metros respecto al geoide WGS84/EGM96. SRTM/GMTED2010 cortesía de USGS; ETOPO1, NOAA. No se atribuye cada píxel a una versión concreta de SRTM.": ": global mosaic, elevations in meters relative to the WGS84/EGM96 geoid. SRTM/GMTED2010 courtesy of USGS; ETOPO1, NOAA. Individual pixels are not attributed to a specific SRTM version.",
   "Los DEM se agregaron por promedio a proyecciones AEQD locales y celdas de 500 m. Marte usa una esfera de radio 3 396 190 m; Tierra usa WGS84. Una celda común no iguala la resolución efectiva ni elimina incertidumbre instrumental. Las métricas se calculan sobre los DEM, no sobre la malla exagerada.": "DEMs were averaged into local AEQD projections with 500 m cells. Mars uses a sphere of radius 3,396,190 m; Earth uses WGS84. A common cell does not equalize effective resolution or eliminate instrumental uncertainty. Metrics are computed from DEMs, not the exaggerated mesh.",
-  " aporta promedios ambientales históricos terrestres para explorar condiciones del ensayo; no clima de Marte ni variables del ranking. El mapa utiliza ": " provides historical Earth environmental averages to explore test conditions; not Martian climate or ranking variables. The map uses "
+  " aporta promedios ambientales históricos terrestres para explorar condiciones del ensayo; no clima de Marte ni variables del ranking. El mapa utiliza ": " provides historical Earth environmental averages to explore test conditions; not Martian climate or ranking variables. The map uses ",
+  "Plano de observación": "Observation view",
+  "Perspectiva 3D": "3D perspective",
+  "Planta · desde arriba": "Plan · from above",
+  "Alzado · desde el sur": "Elevation · from the south",
+  "Lateral · desde el este": "Side · from the east",
+  "Cuadrícula de referencia": "Reference grid",
+  "Malla triangular": "Triangle mesh",
+  "Vistas de perspectiva orientadas · arrastra para explorar": "Oriented perspective views · drag to explore",
+  "CORTE DEL TERRENO · OESTE → ESTE": "TERRAIN SECTION · WEST → EAST",
+  "El relieve, de perfil": "Terrain in profile",
+  "Fila del corte": "Section row",
+  "Compara una fila de cada DEM con la misma escala horizontal y vertical. Alturas respecto a la media de cada ventana; sin exageración visual. Los puntos son centros de celdas separados por 500 m.": "Compare one row from each DEM using shared horizontal and vertical scales. Heights are relative to each window mean, without visual exaggeration. Points are cell centers spaced 500 m apart."
 }

@@ -213,3 +213,10 @@ Se reparó el certificado GTS Root R4 desde la fuente oficial y se validó como 
 Para optimizar telemetría, aplicar de nuevo `supabase/schema.sql` en el editor SQL de Supabase: añade un índice y una función de solo lectura restringida a service_role que obtiene la última recepción de cada estación. Hasta aplicarlo, el servidor mantiene compatibilidad con un máximo de diez páginas; si se supera devuelve un error explícito en lugar de omitir estaciones silenciosamente. No se ejecutó esta migración sobre la base remota.
 
 La integración continua verifica traducciones generadas, pruebas Python, datos y secretos. Para herramientas auxiliares: instalar `requirements-dev.txt`. La validación de idioma en navegador está en `scripts/language_check.cjs`, junto con las pruebas visuales existentes. Las credenciales por dispositivo, retención de datos y cuotas globales siguen pendientes para una operación con múltiples dispositivos; no se cambiaron las credenciales actuales.
+
+
+## Planos y perfiles del terreno
+
+El comparador permite orientar ambas cámaras en perspectiva, planta, alzado desde el sur o lateral desde el este. Son vistas orientadas de una cámara de perspectiva, no planos ortográficos de ingeniería. La cuadrícula de referencia y la malla triangular se pueden mostrar u ocultar. Las vistas se conservan al cambiar de candidato o exageración y se reajustan al tamaño del visor. Sin WebGL se mantienen el mapa 2D, el control de cuadrícula y el perfil científico; los controles exclusivos de 3D se deshabilitan.
+
+El corte oeste–este compara una fila seleccionable de las cuadrículas originales, con un eje vertical común y fijo para ambos recortes completos. La exageración del visor no afecta este perfil. Los puntos representan centros de celdas de 500 m, desde 0,25 hasta 9,75 km del borde occidental. La altura es relativa a la media de cada ventana; no se trata de un mismo transecto geográfico entre planetas.

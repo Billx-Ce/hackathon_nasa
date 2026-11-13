@@ -15,7 +15,7 @@ export async function createViewers(onFallback) {
     try { THREE = await import('three'); ({OrbitControls} = await import('/static/vendor/OrbitControls.js')); }
     catch { fallback = true; }
   }
-  const views = {}, settings = {mode:'elevation', min:-100, max:100, exaggeration:10, sync:true};
+  const views = {}, settings = {mode:'elevation', min:-100, max:100, exaggeration:10, sync:true, preset:'perspective', grid:true, wireframe:false};
   let changing = false;
   function fallbackAll(reason) {
     fallback = true;
@@ -33,6 +33,7 @@ export async function createViewers(onFallback) {
       draw2d(view);
     });
     document.querySelectorAll('[data-action^="rotate"]').forEach(button => { button.disabled = true; button.title = 'El giro orbital requiere el visor 3D.'; });
+    for(const id of ['view-preset','show-wireframe']) if($(id)) $(id).disabled=true;
     document.querySelectorAll('.viewer-controls>span').forEach(el => el.textContent = 'Vista 2D · rueda o botones para acercar');
     onFallback(reason);
   }
@@ -51,7 +52,7 @@ export async function createViewers(onFallback) {
       ctx.fillStyle = `rgb(${v.join(',')})`; ctx.fillRect(x+c*size/20,y+r*size/20,size/20+.5,size/20+.5);
     }
     ctx.strokeStyle = '#b7c9d277'; ctx.lineWidth = .5;
-    for (let i=0;i<=5;i++) {
+    for (let i=0;settings.grid && i<=5;i++) {
       ctx.beginPath();ctx.moveTo(x+i*size/5,y);ctx.lineTo(x+i*size/5,y+size);ctx.stroke();
       ctx.beginPath();ctx.moveTo(x,y+i*size/5);ctx.lineTo(x+size,y+i*size/5);ctx.stroke();
     }
@@ -79,9 +80,10 @@ export async function createViewers(onFallback) {
       if(r<19 && c<19){const a=r*20+c,b=a+20;indices.push(a,b,a+1,a+1,b,b+1);}
     }
     const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geometry.setIndex(indices);geometry.computeVertexNormals();
-    group.add(new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({vertexColors:true,side:THREE.DoubleSide,roughness:1,metalness:0})));
+    group.add(new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({vertexColors:true,side:THREE.DoubleSide,roughness:1,metalness:0,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1})));
+    if(settings.wireframe) group.add(new THREE.LineSegments(new THREE.WireframeGeometry(geometry),new THREE.LineBasicMaterial({color:0xc4e8e4,transparent:true,opacity:.28})));
     const floor = Math.min(...Object.values(views).flatMap(v=>v.data?.relative_elevation_m.flat() || [0]))*settings.exaggeration/1000-.25;
-    const grid = new THREE.GridHelper(10,5,0x4b6379,0x2d455b);grid.position.y=floor;group.add(grid);
+    const grid = new THREE.GridHelper(10,5,0x4b6379,0x2d455b);grid.position.y=floor;grid.visible=settings.grid;group.add(grid);
     // Metric axes and scale labels remain in world coordinates, not CSS pixels.
     for(let i=0;i<=5;i++) label(`${i*2}`, -5+i*2,floor,5.5,group);
     label('km · E',6,floor,5.5,group);label('N',-5.5,floor,-5.4,group);
@@ -100,7 +102,8 @@ export async function createViewers(onFallback) {
     const heights=Object.values(views).flatMap(v=>v.data?.relative_elevation_m.flat()||[0]);
     const low=Math.min(...heights)*settings.exaggeration/1000,high=Math.max(...heights)*settings.exaggeration/1000;
     const target=new THREE.Vector3(0,(low+high)/2,0);
-    const direction=new THREE.Vector3(1,.92,1.2).normalize();
+    const directions={perspective:[1,.92,1.2],top:[0,1,.001],front:[0,.12,1],east:[1,.12,0]};
+    const direction=new THREE.Vector3(...(directions[settings.preset]||directions.perspective)).normalize();
     const right=new THREE.Vector3(direction.z,0,-direction.x).normalize(),up=new THREE.Vector3().crossVectors(direction,right);
     const aspect=Math.min(...Object.values(views).map(v=>v.host.clientWidth/v.host.clientHeight));
     const tanV=Math.tan(THREE.MathUtils.degToRad(view.camera.fov/2)),tanH=tanV*aspect;
@@ -109,7 +112,7 @@ export async function createViewers(onFallback) {
       const point=new THREE.Vector3(x,y,z).sub(target);
       distance=Math.max(distance,Math.max(Math.abs(point.dot(right))/tanH,Math.abs(point.dot(up))/tanV)+point.dot(direction));
     }
-    view.camera.position.copy(target).addScaledVector(direction,distance*.90);view.controls.target.copy(target);view.controls.update();render(view);
+    view.camera.position.copy(target).addScaledVector(direction,distance*(settings.preset==='perspective'?.90:1.12));view.controls.target.copy(target);view.controls.update();render(view);
   }
   function synchronize(source) {
     if(!settings.sync || changing) return;
@@ -156,6 +159,7 @@ export async function createViewers(onFallback) {
     update(options={}){Object.assign(settings,options);Object.values(views).forEach(v=>fallback?draw2d(v):draw3d(v));},
     reset(){reset(views.mars);if(settings.sync)synchronize(views.mars);else reset(views.earth);},
     sync(value){settings.sync=value;if(value)synchronize(views.mars);},
+    preset(value){settings.preset=value;reset(views.mars);reset(views.earth);},
     action,
     isFallback:()=>fallback
   };

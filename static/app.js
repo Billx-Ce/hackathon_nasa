@@ -1,3 +1,4 @@
+import {renderProfile} from '/static/profile.js';
 import {createViewers} from './viewers.js';
 import {createTelemetryPanel} from './telemetry.js';
 import {showDateValidation,clearClimate,renderClimate,explainComparison} from './experience.js';
@@ -46,6 +47,7 @@ function selectCandidate(id){
   $('slope-detail').textContent=`Marte / Tierra · Δ ${number(b.slope_mean_deg-a.slope_mean_deg)}°`;
   $('distance-value').textContent=number(selected.comparison.pca_distance,3);
   explainComparison(catalogue,reference,selected,featureLabels);
+  updateProfile();
   $('resolution-detail').textContent=`Resolución de cuadrícula original registrada: MOLA ${reference.provenance.native_resolution.map(v=>number(v,2)).join(' × ')} m (en el ecuador); mosaico terrestre ${selected.provenance.native_resolution.map(v=>number(v,7)).join(' × ')} grados. Ambas se agregaron a 500 m por celda en proyecciones métricas locales. El tamaño en metros de una celda angular depende de la latitud.`;
   rows($('differences'),Object.entries(selected.comparison.differences).map(([key,d])=>[
     featureLabels[key][0],`${number(d.mars)} ${featureLabels[key][1]}`,`${number(d.earth)} ${featureLabels[key][1]}`,
@@ -153,3 +155,19 @@ async function initializeDates(){
 for(const id of ['start','end'])for(const event of ['input','change'])$(id).addEventListener(event,()=>showDateValidation(limits));
 initializeDates();
 initialize();
+
+function updateProfile(){
+  if(!reference||!selected)return;
+  const row=Number($('profile-row').value);
+  $('profile-row-value').textContent=`${row+1} / 20`;
+  renderProfile(reference,selected,row);
+}
+$('view-preset').addEventListener('change',event=>viewers?.preset(event.target.value));
+$('show-grid').addEventListener('change',event=>viewers?.update({grid:event.target.checked}));
+$('show-wireframe').addEventListener('change',event=>viewers?.update({wireframe:event.target.checked}));
+$('profile-row').addEventListener('input',updateProfile);
+let profileWidth=0;
+new ResizeObserver(entries=>{
+  const width=Math.round(entries[0].contentRect.width);
+  if(width!==profileWidth){profileWidth=width;updateProfile();}
+}).observe($('terrain-profile'));
